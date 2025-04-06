@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo1np632yj0u1"]
+
+[ext_resource type="Script" uid="uid://bj6egdt2d28um" path="res://Character/Character.cs" id="1_vx5l7"]
+
+[node name="Character" type="CharacterBody2D"]
+script = ExtResource("1_vx5l7")
+Speed = 100.0
+Gravity = 100.0
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+
+[node name="ReachArea" type="Area2D" parent="."]
+
+[node name="StateMachine" type="Node" parent="."]

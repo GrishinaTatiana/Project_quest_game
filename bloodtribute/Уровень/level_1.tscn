@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://1g2xsm7xfnm8"]
+
+[ext_resource type="PackedScene" uid="uid://bnjeminrdn7x4" path="res://Уровень/Level.tscn" id="1_eye1g"]
+[ext_resource type="Texture2D" uid="uid://c1vfxonmfqtin" path="res://Уровень/abb5e9d35633306eefba92ff5c5657eee957cee3.png" id="2_a8gyf"]
+
+[node name="Level1" instance=ExtResource("1_eye1g")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_a8gyf")

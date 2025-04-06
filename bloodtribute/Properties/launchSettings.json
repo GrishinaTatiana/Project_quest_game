@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "BloodTribute": {
+      "commandName": "Project"
+    },
+    "Профиль 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\user\\Desktop\\Годот для дебилов\\Godot_v4.4.1-stable_mono_win64.exe",
+      "workingDirectory": ".",
+      "nativeDebugging": true
+    }
+  }
+}

@@ -10,7 +10,7 @@ namespace BloodTribute
 {
     public class HeroIdleState : HeroState
     {
-        public override HeroStates State => HeroStates.Idle;
+        public override HeroStates StateType => HeroStates.Idle;
         public HeroIdleState(Hero Parent) : base(Parent)
         {
         }
@@ -18,14 +18,12 @@ namespace BloodTribute
         public override void Enter()
         {
             var flipped = Parent.Sprite.FlipH;
-            GD.Print("Entered Idle state");
             Parent.Sprite.Animation = "Idle";
             Parent.Sprite.FlipH = flipped;
         }
 
         public override void Exit()
         {
-            GD.Print("Exited Idle state");
             base.Exit();
         }
 
@@ -38,6 +36,11 @@ namespace BloodTribute
         public override void Update(double delta)
         {
             
+        }
+
+        public override bool ShouldActivate()
+        {
+            return true;
         }
     }
 }

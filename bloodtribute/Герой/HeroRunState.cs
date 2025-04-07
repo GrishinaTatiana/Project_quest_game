@@ -5,7 +5,7 @@ namespace BloodTribute
 {
     public class HeroRunState : HeroState
     {
-        public override HeroStates State => HeroStates.Run;
+        public override HeroStates StateType => HeroStates.Run;
 
         public HeroRunState(Hero Parent) : base(Parent)
         {
@@ -13,13 +13,11 @@ namespace BloodTribute
 
         public override void Enter()
         {
-            GD.Print("Entered Run state");
             Parent.Sprite.Animation = "Run"; 
         }
 
         public override void Exit()
         {
-            GD.Print("Exited Run state");
             base.Exit();
         }
 
@@ -41,6 +39,11 @@ namespace BloodTribute
         public override void Update(double delta)
         {
             throw new NotImplementedException();
+        }
+
+        public override bool ShouldActivate()
+        {
+            return Input.GetAxis("MoveLeft", "MoveRight") != 0;
         }
     }
 }

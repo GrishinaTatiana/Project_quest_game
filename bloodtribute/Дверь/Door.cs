@@ -19,7 +19,8 @@ public partial class Door : Node2D, IInteractable
         ConnectedDoor.GetParent().AddChild(character);
         character.Position = ConnectedDoor.Position;
         InteractionFinished();
-        return;
+        await Task.Delay(1000);
+        GD.Print("dsfdsfds");
     }
 
     public override void _Ready()

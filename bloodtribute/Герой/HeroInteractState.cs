@@ -1,12 +1,16 @@
 using BloodTribute;
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 internal class HeroInteractState : HeroState
 {
     HeroStateMachine machine;
     IInteractable CurrentInteraction;
+    List<IInteractable> CurrentInteractables;
+
+    public override HeroStates StateType => HeroStates.Interact;
 
     public HeroInteractState(HeroStateMachine machine, Hero Parent) : base(Parent)
     {
@@ -20,19 +24,18 @@ internal class HeroInteractState : HeroState
         base.Exit();
     }
 
-    public override HeroStates State => HeroStates.Interact;
-
     public override void Enter()
     {
         Parent.Sprite.Animation = "Interact";
+        StartInteraction(CurrentInteractables[0]);
     }
 
-    public async Task StartInteraction(IInteractable obj)
+    public void StartInteraction(IInteractable obj)
     {
         machine.IsBlockedInputs = true;
         CurrentInteraction = obj;
         obj.InteractionFinished += ReturnControl;
-        await obj.Interact(Parent);
+        obj.Interact(Parent);
     }
 
     void ReturnControl()
@@ -52,5 +55,20 @@ internal class HeroInteractState : HeroState
     public override void Update(double delta)
     {
         throw new System.NotImplementedException();
+    }
+
+    public override bool ShouldActivate()
+    {
+        if (Input.IsActionJustPressed("InteractMouse"))
+        {
+            CurrentInteractables = ((Hero)Parent).GetIInteractableAreasUnderCursor();
+            return CurrentInteractables.Count > 0;
+        }
+        else if (Input.IsActionJustPressed("InteractKey"))
+        {
+            CurrentInteractables = ((Hero)Parent).GetIInteractableOverlappingAreas();
+            return CurrentInteractables.Count > 0;
+        }
+        return false;
     }
 }

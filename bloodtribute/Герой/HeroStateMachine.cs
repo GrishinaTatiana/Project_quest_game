@@ -5,12 +5,13 @@ using System.Threading;
 
 public partial class HeroStateMachine : Node
 {
-    Dictionary<HeroStates, HeroState> states;
+    List <HeroState> states;
 
     HeroState currentState;
-    HeroState defaultState;
 
     public bool IsBlockedInputs = false;
+
+    bool allowDefaulting = true;
 
     Hero Parent;
 
@@ -18,65 +19,54 @@ public partial class HeroStateMachine : Node
     {
         Parent = GetParent<Hero>();
         states = new();
-        
-        states[HeroStates.Idle] = new HeroIdleState(Parent);
 
-        states[HeroStates.Run] = new HeroRunState(Parent);
-        states[HeroStates.Run].Exited += SwitchToDefault;
+        HeroState tmp = new HeroIdleState(Parent);
+        states.Add(tmp);
 
-        states[HeroStates.Interact] = new HeroInteractState(this, Parent);
-        states[HeroStates.Interact].Exited += SwitchToDefault;
+        tmp = new HeroRunState(Parent);
+        tmp.Exited += ResetStates;
+        states.Add(tmp);
 
-        currentState = states[HeroStates.Idle];
-        defaultState = states[HeroStates.Idle];
+        tmp = new HeroInteractState(this, Parent);
+        tmp.Exited += ResetStates;
+        states.Add(tmp);
 
-        Parent.Ready += () => currentState.Enter();
+        states.Sort((x, y) => x.StateType.CompareTo(y.StateType));
+        currentState = states[states.Count - 1];
     }
 
-    void SwitchToDefault()
+    void ResetStates()
     {
-        currentState = defaultState;
+        allowDefaulting = true;
+        currentState = null;
+    }
+
+    void ChangeState(HeroState state)
+    {
+        if(currentState == state) return;
+        GD.Print("Entered " + state.StateType.ToString() + " state");
+        if(currentState != null)
+            currentState.Exit();
+        currentState = state;
         currentState.Enter();
+        allowDefaulting = false;
     }
 
-    void ChangeState(HeroStates state)
+    public override void _Process(double delta)
     {
-        currentState.Exit();
-        currentState = states[state];
-        currentState.Enter();
-    }
-
-    public async override void _Process(double delta)
-    {
-        if(IsBlockedInputs)
-            return;
-
-        if(Input.IsActionJustPressed("InteractMouse"))
+        if (!IsBlockedInputs)
         {
-            GD.Print("Clicked");
-            var tmp = GetAreasUnderCursor();
-            if (tmp.Count > 0)
+            var i = 0;
+            for (; i< states.Count - 1; i++)
             {
-                ChangeState(HeroStates.Interact);
-                await ((HeroInteractState)currentState).StartInteraction(tmp[0]);
-            }
-            return;
-        }
-        if (Input.IsActionJustPressed("InteractKey"))
-        {
-            GD.Print("PressedE");
-            foreach(var area in Parent.ReachArea.GetOverlappingAreas())
-                if(area.GetParent() is IInteractable tmp)
+                if (states[i].ShouldActivate())
                 {
-                    ChangeState(HeroStates.Interact);
-                    await ((HeroInteractState)currentState).StartInteraction(tmp);
-                    break;
+                    ChangeState(states[i]);
+                    return;
                 }
-        }
-        if(currentState.State != HeroStates.Run && Input.GetAxis("MoveLeft", "MoveRight") != 0)
-        {
-            ChangeState(HeroStates.Run);
-            return;
+            }
+            if(allowDefaulting)
+                ChangeState(states[i]);
         }
     }
 
@@ -85,38 +75,23 @@ public partial class HeroStateMachine : Node
         currentState.PhysicsUpdate(delta);
         base._PhysicsProcess(delta);
     }
-
-    List<IInteractable> GetAreasUnderCursor()
-    {
-        var list = new List<IInteractable>();
-        var spaceState = Parent.GetWorld2D().DirectSpaceState;
-        var query = new PhysicsPointQueryParameters2D();
-        query.Position = Parent.GetGlobalMousePosition();
-        query.CollisionMask = 2;
-        query.CollideWithAreas = true;
-        var result = spaceState.IntersectPoint(query);
-        foreach (var area in result)
-        {
-            var a = (Area2D)area["collider"];
-            if (Parent.ReachArea.GetOverlappingAreas().Contains(a))
-                if (a.GetParent() is IInteractable tmp)
-                    list.Add(tmp);
-        }
-        return list;
-    }
-}
-
-public abstract class HeroState : State
-{
-    public abstract HeroStates State { get; }
-    protected HeroState(Character Parent) : base(Parent)
-    {
-    }
 }
 
 public enum HeroStates
 {
-    Idle,
-    Run,
-    Interact
+    Idle = 2,
+    Run = 1,
+    Interact = 0
+}
+
+
+public abstract class HeroState : State
+{
+    public abstract HeroStates StateType { get; }
+
+    protected HeroState(Character Parent) : base(Parent)
+    {
+    }
+
+    public abstract bool ShouldActivate();
 }

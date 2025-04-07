@@ -14,7 +14,7 @@ position = Vector2(-233, 35)
 ConnectedDoor = NodePath("../../Level1/Door")
 
 [node name="Hero" parent="Level" instance=ExtResource("2_cypyq")]
-position = Vector2(5, 3)
+position = Vector2(-226, 51)
 
 [node name="Level1" parent="." instance=ExtResource("2_v4244")]
 position = Vector2(974, -50)

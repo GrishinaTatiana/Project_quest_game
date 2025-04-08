@@ -9,6 +9,8 @@ public interface IInteractable
 
     public Area2D InteractableArea { get; }
 
+    public string ObjectName { get; }
+
     public Task Interact(Character character);
 }
 

@@ -5,6 +5,14 @@ using System.Linq;
 
 public partial class Hero : Character
 {
+    Item SelectedItem;
+    HotbarItem SelectedHotbarItem;
+
+    HScrollBar ScrollBar;
+    HBoxContainer Hotbar;
+
+    PackedScene hotbarItemScene = GD.Load<PackedScene>("res://Герой/UI/HotbarItem.tscn");
+
     public List<IInteractable> GetIInteractableAreasUnderCursor()
     {
         var list = new List<IInteractable>();
@@ -35,5 +43,41 @@ public partial class Hero : Character
             }
         }
         return tmp;
+    }
+
+
+    public override void _Ready()
+    {
+        ScrollBar = GetNode<HScrollBar>("CanvasLayer/ScrollBar");
+        Hotbar = GetNode<HBoxContainer>("CanvasLayer/ScrollBar/HBoxContainer");
+        InventoryChanged += UpdateHotbar;
+        base._Ready();
+    }
+
+    public void ChangedSelectedItem(HotbarItem item)
+    {
+        SelectedHotbarItem?.Unselect();
+        item.Select();
+        SelectedHotbarItem = item;
+        SelectedItem = item._Item;
+    }
+
+    public void UpdateHotbar()
+    {
+        foreach(var e in Hotbar.GetChildren())
+            e.QueueFree();
+
+        foreach (var i in Inventory)
+        {
+            var tmp = hotbarItemScene.Instantiate<HotbarItem>();
+            tmp.SetItem(i, () => ChangedSelectedItem(tmp));
+            if(tmp._Item == SelectedItem)
+            {
+                tmp.Ready += tmp.Select;
+                SelectedHotbarItem = tmp;
+            }
+
+            Hotbar.AddChild(tmp);
+        }
     }
 }

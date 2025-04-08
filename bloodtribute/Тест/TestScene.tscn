@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://crwq1fto4cyap"]
+[gd_scene load_steps=6 format=3 uid="uid://crwq1fto4cyap"]
 
 [ext_resource type="PackedScene" uid="uid://bnjeminrdn7x4" path="res://Уровень/Level.tscn" id="1_v8y0t"]
 [ext_resource type="PackedScene" uid="uid://b71q0ca8st8dx" path="res://Герой/Hero.tscn" id="2_cypyq"]
 [ext_resource type="PackedScene" uid="uid://df0scky4wawg6" path="res://Дверь/Door.tscn" id="2_tvrfw"]
 [ext_resource type="PackedScene" uid="uid://1g2xsm7xfnm8" path="res://Уровень/level_1.tscn" id="2_v4244"]
+[ext_resource type="PackedScene" uid="uid://uf4ag3n2qucm" path="res://Предметы/test_key.tscn" id="4_62871"]
 
 [node name="TestGame" type="Node"]
 
@@ -16,9 +17,26 @@ ConnectedDoor = NodePath("../../Level1/Door")
 [node name="Hero" parent="Level" instance=ExtResource("2_cypyq")]
 position = Vector2(-226, 51)
 
+[node name="TestKey" parent="Level" instance=ExtResource("4_62871")]
+position = Vector2(87, 134)
+scale = Vector2(0.5, 0.5)
+ObjectName = ""
+
 [node name="Level1" parent="." instance=ExtResource("2_v4244")]
 position = Vector2(974, -50)
 
 [node name="Door" parent="Level1" node_paths=PackedStringArray("ConnectedDoor") instance=ExtResource("2_tvrfw")]
 position = Vector2(-325, 88)
 ConnectedDoor = NodePath("../../Level/Door")
+
+[node name="TestKey" parent="." instance=ExtResource("4_62871")]
+position = Vector2(62, 131)
+
+[node name="TestKey2" parent="." instance=ExtResource("4_62871")]
+position = Vector2(133, 137)
+
+[node name="TestKey3" parent="." instance=ExtResource("4_62871")]
+position = Vector2(61, 145)
+
+[node name="TestKey4" parent="." instance=ExtResource("4_62871")]
+position = Vector2(147, 127)

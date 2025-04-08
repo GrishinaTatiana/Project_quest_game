@@ -8,6 +8,8 @@ public partial class Door : Node2D, IInteractable
 {
     public Area2D InteractableArea {  get; private set; }
 
+    public string ObjectName => "Дверь";
+
     [Export]
     public Door ConnectedDoor;
 

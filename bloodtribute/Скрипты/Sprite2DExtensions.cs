@@ -23,4 +23,14 @@ public static class Sprite2DExtensions
 
         return body;
     }
+
+    public static CollisionShape2D GenerateShape(this Sprite2D sprite)
+    {
+        var shape = new CollisionShape2D();
+        var tmp = new RectangleShape2D();
+        tmp.Size = sprite.GetRect().Size * sprite.Scale;
+        shape.Shape = tmp;
+
+        return shape;
+    }
 }

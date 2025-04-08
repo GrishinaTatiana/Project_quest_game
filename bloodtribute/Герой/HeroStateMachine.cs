@@ -72,7 +72,7 @@ public partial class HeroStateMachine : Node
 
     public override void _PhysicsProcess(double delta)
     {
-        currentState.PhysicsUpdate(delta);
+        if(currentState != null) currentState.PhysicsUpdate(delta);
         base._PhysicsProcess(delta);
     }
 }

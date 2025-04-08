@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b71q0ca8st8dx"]
+[gd_scene load_steps=44 format=3 uid="uid://b71q0ca8st8dx"]
 
 [ext_resource type="PackedScene" uid="uid://bo1np632yj0u1" path="res://Character/Character.tscn" id="1_ts3u1"]
 [ext_resource type="Texture2D" uid="uid://8ixcap1nmnw7" path="res://Герой/IDLE.png" id="1_u0n1l"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dq8p8ckgkyhkl" path="res://Герой/RUN.png" id="3_ts3u1"]
 [ext_resource type="Texture2D" uid="uid://bf83v6p1rfika" path="res://Герой/ATTACK 1.png" id="4_x3v3e"]
 [ext_resource type="Script" uid="uid://c8fc82j1l2aim" path="res://Герой/HeroStateMachine.cs" id="5_3mnb8"]
+[ext_resource type="Theme" uid="uid://b6b0ulbqwwxo7" path="res://Герой/UI/new_theme.tres" id="7_7lfho"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_15kk4"]
 atlas = ExtResource("1_u0n1l")
@@ -289,3 +290,21 @@ zoom = Vector2(1.5, 1.5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_x3v3e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
+
+[node name="ScrollBar" type="HScrollBar" parent="CanvasLayer" index="0"]
+clip_contents = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme = ExtResource("7_7lfho")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollBar" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

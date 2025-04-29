@@ -10,7 +10,6 @@ namespace BloodTribute
 {
     public class HeroIdleState : HeroState
     {
-        public override HeroStates StateType => HeroStates.Idle;
         public HeroIdleState(Hero Parent) : base(Parent)
         {
         }
@@ -29,18 +28,6 @@ namespace BloodTribute
 
         public override void PhysicsUpdate(double delta)
         {
-            Parent.Velocity = new Vector2(0, Parent.Gravity);
-            Parent.MoveAndSlide();
-        }
-
-        public override void Update(double delta)
-        {
-            
-        }
-
-        public override bool ShouldActivate()
-        {
-            return true;
         }
     }
 }

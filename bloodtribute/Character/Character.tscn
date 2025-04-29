@@ -10,5 +10,3 @@ Gravity = 100.0
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 
 [node name="ReachArea" type="Area2D" parent="."]
-
-[node name="StateMachine" type="Node" parent="."]

@@ -20,7 +20,12 @@ public abstract class State
         Exited?.Invoke();
     }
 
-    public abstract void Update(double delta);
-
     public abstract void PhysicsUpdate(double delta);
+}
+
+public abstract class HeroState : State
+{
+    protected HeroState(Character Parent) : base(Parent)
+    {
+    }
 }

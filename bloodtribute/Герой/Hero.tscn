@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://exocfbvov5ty" path="res://Герой/Hero.cs" id="2_3mnb8"]
 [ext_resource type="Texture2D" uid="uid://dq8p8ckgkyhkl" path="res://Герой/RUN.png" id="3_ts3u1"]
 [ext_resource type="Texture2D" uid="uid://bf83v6p1rfika" path="res://Герой/ATTACK 1.png" id="4_x3v3e"]
-[ext_resource type="Script" uid="uid://c8fc82j1l2aim" path="res://Герой/HeroStateMachine.cs" id="5_3mnb8"]
 [ext_resource type="Theme" uid="uid://b6b0ulbqwwxo7" path="res://Герой/UI/new_theme.tres" id="7_7lfho"]
+[ext_resource type="Texture2D" uid="uid://dghe0pbuslnj6" path="res://Тест/LightSprite.png" id="7_fphux"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_15kk4"]
 atlas = ExtResource("1_u0n1l")
@@ -264,6 +264,7 @@ size = Vector2(32, 49)
 size = Vector2(20, 36)
 
 [node name="Hero" instance=ExtResource("1_ts3u1")]
+scale = Vector2(10, 10)
 script = ExtResource("2_3mnb8")
 Speed = 120.0
 
@@ -281,17 +282,14 @@ position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_1uo57")
 debug_color = Color(0.969302, 0, 0.462251, 0.42)
 
-[node name="StateMachine" parent="." index="2"]
-script = ExtResource("5_3mnb8")
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
+zoom = Vector2(0.5, 0.5)
 
-[node name="Camera2D" type="Camera2D" parent="." index="3"]
-zoom = Vector2(1.5, 1.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_x3v3e")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
 
 [node name="ScrollBar" type="HScrollBar" parent="CanvasLayer" index="0"]
 clip_contents = true
@@ -308,3 +306,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="5"]
+scale = Vector2(0.5, 0.5)
+shadow_enabled = true
+shadow_item_cull_mask = 1023
+texture = ExtResource("7_fphux")

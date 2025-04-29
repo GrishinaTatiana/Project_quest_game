@@ -10,7 +10,10 @@ public partial class Item : Node2D, IInteractable
     [Export]
     public string ObjectName {  get; private set; }
 
-    public event Action InteractionFinished;
+    [Export]
+    public string FailedInteraction { get; set; }
+
+    public event Action<IInteractable> InteractionFinished;
 
     public override void _Ready()
     {
@@ -25,10 +28,12 @@ public partial class Item : Node2D, IInteractable
         GetParent().RemoveChild(this);
         RemoveChild(InteractableArea);
         character.InsertItem(this);
-        InteractionFinished?.Invoke();
+        InteractionFinished?.Invoke(this);
         return Task.CompletedTask;
     }
 
-
-
+    public bool CanInteract()
+    {
+        return true;
+    }
 }

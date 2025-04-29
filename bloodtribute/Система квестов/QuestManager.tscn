@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://w77n7h4y4s1u"]
+
+[ext_resource type="Script" uid="uid://dri11pwl5js7v" path="res://Система квестов/QuestManager.cs" id="1_34l4h"]
+
+[node name="QusetManager" type="Node"]
+script = ExtResource("1_34l4h")

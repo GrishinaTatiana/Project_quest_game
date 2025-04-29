@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm3svn4k5mu7i"]
+
+[ext_resource type="PackedScene" uid="uid://b1nfxa2ocbnv8" path="res://BasicInteractable/BasicInteractable.tscn" id="1_lguik"]
+[ext_resource type="Script" uid="uid://dtkxqlbyslft4" path="res://BasicInteractable/OneTimeInteractable.cs" id="2_7xrwx"]
+[ext_resource type="Texture2D" uid="uid://bqd857rdjgv01" path="res://Уровни/Первый уровень/Counter.png" id="2_bxtpp"]
+
+[node name="BasicInteractable" instance=ExtResource("1_lguik")]
+script = ExtResource("2_7xrwx")
+InteractionText = "Позавтракал"
+FailedInteraction = "Я уже поел"
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_bxtpp")

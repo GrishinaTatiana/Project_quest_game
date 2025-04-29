@@ -1,3 +1,4 @@
+using BloodTribute;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ public partial class Hero : Character
     HBoxContainer Hotbar;
 
     PackedScene hotbarItemScene = GD.Load<PackedScene>("res://Герой/UI/HotbarItem.tscn");
+
+    public event Action FinishedInteracting;
 
     public List<IInteractable> GetIInteractableAreasUnderCursor()
     {
@@ -39,18 +42,27 @@ public partial class Hero : Character
         {
             if(e.GetParent() is IInteractable obj)
             {
-                tmp.Add(obj);
+                tmp.Add(obj);  
             }
         }
         return tmp;
     }
 
+    public async void Interact(IInteractable interactable)
+    {
+        if (!interactable.CanInteract())
+            ScuffedServiceProvider.GetService<IMessagePrinter>().PrintMessage(interactable.FailedInteraction);
+        else
+            await interactable.Interact(this);
+        FinishedInteracting?.Invoke();
+    }
 
     public override void _Ready()
     {
         ScrollBar = GetNode<HScrollBar>("CanvasLayer/ScrollBar");
         Hotbar = GetNode<HBoxContainer>("CanvasLayer/ScrollBar/HBoxContainer");
         InventoryChanged += UpdateHotbar;
+        Puppeteer = new PlayerPuppeteer(this);
         base._Ready();
     }
 

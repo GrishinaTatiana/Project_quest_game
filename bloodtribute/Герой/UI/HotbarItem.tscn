@@ -7,10 +7,10 @@
 [node name="HotbarItem" type="Control"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 3
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1002.0
-offset_bottom = -498.0
+anchor_right = 0.13
+anchor_bottom = 0.231
+offset_right = 0.23999
+offset_bottom = 0.311996
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dnbwu")

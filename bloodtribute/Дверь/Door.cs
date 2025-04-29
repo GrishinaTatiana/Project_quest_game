@@ -11,18 +11,20 @@ public partial class Door : Node2D, IInteractable
     public string ObjectName => "Дверь";
 
     [Export]
+    public string FailedInteraction { get; set; }
+
+    [Export]
     public Door ConnectedDoor;
 
-    public event Action InteractionFinished;
+    public event Action<IInteractable> InteractionFinished;
 
     public async Task Interact(Character character)
     {
         character.GetParent().RemoveChild(character);
         ConnectedDoor.GetParent().AddChild(character);
         character.Position = ConnectedDoor.Position;
-        InteractionFinished();
+        InteractionFinished?.Invoke(this);
         await Task.Delay(1000);
-        GD.Print("dsfdsfds");
     }
 
     public override void _Ready()
@@ -41,7 +43,8 @@ public partial class Door : Node2D, IInteractable
         base._Ready();
     }
 
-
-
-
+    public virtual bool CanInteract()
+    {
+        return true;
+    }
 }

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc8gnb2rd6pow"]
+
+[ext_resource type="PackedScene" uid="uid://14xh7xqp4h1i" path="res://Предмет/Item.tscn" id="1_p41xa"]
+[ext_resource type="Texture2D" uid="uid://bqd857rdjgv01" path="res://Уровни/Первый уровень/Counter.png" id="2_ua0xk"]
+
+[node name="Item" instance=ExtResource("1_p41xa")]
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource("2_ua0xk")

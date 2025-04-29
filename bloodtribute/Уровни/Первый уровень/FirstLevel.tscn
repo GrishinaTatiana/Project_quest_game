@@ -1,0 +1,77 @@
+[gd_scene load_steps=13 format=3 uid="uid://bfr5ljbgkj2w1"]
+
+[ext_resource type="PackedScene" uid="uid://bnjeminrdn7x4" path="res://Уровень/Level.tscn" id="1_1px8p"]
+[ext_resource type="Texture2D" uid="uid://cplammpr0hf2h" path="res://Уровни/Первый уровень/Background.png" id="2_jj4uh"]
+[ext_resource type="PackedScene" uid="uid://td8epsdh2fjd" path="res://Уровни/Первый уровень/Boots.tscn" id="3_at6na"]
+[ext_resource type="PackedScene" uid="uid://cm3svn4k5mu7i" path="res://Уровни/Первый уровень/Counter.tscn" id="4_i7xij"]
+[ext_resource type="PackedScene" uid="uid://b0esw5ojpprfe" path="res://Уровни/Первый уровень/Fishes.tscn" id="5_lj61b"]
+[ext_resource type="PackedScene" uid="uid://b71q0ca8st8dx" path="res://Герой/Hero.tscn" id="7_03hxq"]
+[ext_resource type="Script" uid="uid://c8kid35pjoise" path="res://Дверь/Door.cs" id="7_ytx64"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_03hxq"]
+a = Vector2(-2972, 426)
+b = Vector2(2979, 426)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ytx64"]
+b = Vector2(0, 1500)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ahcnj"]
+b = Vector2(0, 1500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahcnj"]
+size = Vector2(308, 827)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4byaa"]
+size = Vector2(185.25, 66.5)
+
+[node name="Level" instance=ExtResource("1_1px8p")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_jj4uh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" index="0"]
+shape = SubResource("SegmentShape2D_03hxq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" index="1"]
+position = Vector2(2680, -686)
+shape = SubResource("SegmentShape2D_ytx64")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" index="2"]
+position = Vector2(-2669, -705)
+shape = SubResource("SegmentShape2D_ahcnj")
+
+[node name="Boots" parent="." index="1" instance=ExtResource("3_at6na")]
+z_index = 1
+position = Vector2(-2231, 429)
+
+[node name="Fishes" parent="." index="2" instance=ExtResource("5_lj61b")]
+z_index = 1
+position = Vector2(59, 451)
+
+[node name="Hero" parent="." index="3" instance=ExtResource("7_03hxq")]
+position = Vector2(-431, 59)
+Speed = 1000.0
+
+[node name="Counter" parent="." index="4" instance=ExtResource("4_i7xij")]
+position = Vector2(2418, 340)
+ObjectName = "Кухонный стол"
+
+[node name="Door" type="Node2D" parent="." index="5"]
+position = Vector2(-2715, -358)
+script = ExtResource("7_ytx64")
+
+[node name="DoorSprite" type="Sprite2D" parent="Door" index="0"]
+
+[node name="InteractableArea" type="Area2D" parent="Door" index="1"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/InteractableArea" index="0"]
+position = Vector2(70, 272.5)
+shape = SubResource("RectangleShape2D_ahcnj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Door/InteractableArea" index="1"]
+position = Vector2(7.375, 719.75)
+shape = SubResource("RectangleShape2D_4byaa")

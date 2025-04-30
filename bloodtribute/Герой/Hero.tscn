@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://exocfbvov5ty" path="res://Герой/Hero.cs" id="2_3mnb8"]
 [ext_resource type="Texture2D" uid="uid://dq8p8ckgkyhkl" path="res://Герой/RUN.png" id="3_ts3u1"]
 [ext_resource type="Texture2D" uid="uid://bf83v6p1rfika" path="res://Герой/ATTACK 1.png" id="4_x3v3e"]
-[ext_resource type="Theme" uid="uid://b6b0ulbqwwxo7" path="res://Герой/UI/new_theme.tres" id="7_7lfho"]
+[ext_resource type="PackedScene" uid="uid://bisou88n41uk8" path="res://Герой/UI/InventoryUI.tscn" id="6_7lfho"]
 [ext_resource type="Texture2D" uid="uid://dghe0pbuslnj6" path="res://Тест/LightSprite.png" id="7_fphux"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_15kk4"]
@@ -263,9 +263,10 @@ size = Vector2(32, 49)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3v3e"]
 size = Vector2(20, 36)
 
-[node name="Hero" instance=ExtResource("1_ts3u1")]
+[node name="Hero" node_paths=PackedStringArray("InventoryUi") instance=ExtResource("1_ts3u1")]
 scale = Vector2(10, 10)
 script = ExtResource("2_3mnb8")
+InventoryUi = NodePath("CanvasLayer/InventoryUI")
 Speed = 120.0
 
 [node name="Sprite" parent="." index="0"]
@@ -291,23 +292,11 @@ shape = SubResource("RectangleShape2D_x3v3e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
 
-[node name="ScrollBar" type="HScrollBar" parent="CanvasLayer" index="0"]
-clip_contents = true
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 150.0
-grow_horizontal = 2
-theme = ExtResource("7_7lfho")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollBar" index="0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="InventoryUI" parent="CanvasLayer" index="0" node_paths=PackedStringArray("Hero") instance=ExtResource("6_7lfho")]
+Hero = NodePath("../..")
 
 [node name="PointLight2D" type="PointLight2D" parent="." index="5"]
+visible = false
 scale = Vector2(0.5, 0.5)
 shadow_enabled = true
 shadow_item_cull_mask = 1023

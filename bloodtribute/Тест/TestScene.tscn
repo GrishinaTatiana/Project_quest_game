@@ -63,7 +63,6 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Door/InteractableArea"]
 position = Vector2(210, -363.333)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_s8xkc")
 
 [node name="TestKey" parent="Level" instance=ExtResource("4_62871")]
@@ -78,18 +77,6 @@ position = Vector2(-4680, -1673)
 [node name="Door" parent="Level1" node_paths=PackedStringArray("ConnectedDoor") instance=ExtResource("2_tvrfw")]
 position = Vector2(-325, 88)
 ConnectedDoor = NodePath("../../Level/Door")
-
-[node name="TestKey" parent="." instance=ExtResource("4_62871")]
-position = Vector2(62, 131)
-
-[node name="TestKey2" parent="." instance=ExtResource("4_62871")]
-position = Vector2(133, 137)
-
-[node name="TestKey3" parent="." instance=ExtResource("4_62871")]
-position = Vector2(61, 145)
-
-[node name="TestKey4" parent="." instance=ExtResource("4_62871")]
-position = Vector2(147, 127)
 
 [node name="FirstLevel" type="Node2D" parent="."]
 position = Vector2(5247, 161)
@@ -158,4 +145,5 @@ Boots = NodePath("../../FirstLevel/Boots")
 Fishes = NodePath("../../FirstLevel/Fishes")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)

@@ -30,7 +30,7 @@ public partial class FirstQuest : Quest
     {
         interactable.InteractionFinished -= increaseCounter;
         counter++;
-        if(counter == 3)
+        if(counter == 1)
         {
             FinishQuest();
         }
@@ -39,7 +39,11 @@ public partial class FirstQuest : Quest
     protected override void FinishQuest()
     {
         DoorToUnlock.canInteract = true;
-        FirstLevel.AddChild(GD.Load<PackedScene>("res://Предметы/test_key.tscn").Instantiate<TestKey>());
+        for (int i = 0; i < 7; i++)
+        {
+            FirstLevel.AddChild(GD.Load<PackedScene>("res://Предметы/test_key.tscn").Instantiate<TestKey>());
+            FirstLevel.AddChild(GD.Load<PackedScene>("res://Предмет/Item.tscn").Instantiate<Item>());
+        }
         base.FinishQuest();
     }
 }

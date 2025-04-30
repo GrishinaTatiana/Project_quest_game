@@ -9,17 +9,21 @@ public partial class HotbarItem : Control //Говнище
     public Button button;
 
     Texture2D ItemTexture;
-    Action sdfdssd;
 
     bool changeOnToggle = true;
+    bool toggled = false;
     public Item _Item {  get; private set; }
 
 
-    public void SetItem(Item item, Action action)
+    public void SetItem(Item item)
     {
         _Item = item;
-        sdfdssd = action;
-        ItemTexture = item.Sprite.Texture;
+        ItemIcon.Texture = item.Sprite.Texture;
+    }
+    public void SetItem()
+    {
+        _Item = null;
+        ItemIcon.Texture = null;
     }
 
     public override void _Ready()
@@ -28,11 +32,10 @@ public partial class HotbarItem : Control //Говнище
         Selected = GetNode<TextureRect>("Selected");
         ItemIcon = GetNode<TextureRect>("ItemIcon");
         button = GetNode<Button>("Button");
-        ItemIcon.Texture = ItemTexture;
 
         button.MouseEntered += ToggleOn;
         button.MouseExited += ToggleOff;
-        button.Pressed += sdfdssd;
+        button.Pressed += ToggleSelection;
     }
 
     void ToggleOn()
@@ -46,14 +49,24 @@ public partial class HotbarItem : Control //Говнище
             Selected.Visible = false;
     }
 
+    void ToggleSelection()
+    {
+        if (toggled)
+            Unselect();
+        else
+            Select();
+    }
+
     public void Select()
     {
+        toggled = true;
         Selected.Visible = true;
         changeOnToggle = false;
     }
 
     public void Unselect()
     {
+        toggled = false;
         Selected.Visible = false;
         changeOnToggle = true;
     }

@@ -7,7 +7,7 @@ public partial class Character : CharacterBody2D
 {
     public AnimatedSprite2D Sprite { get; private set; }
     protected IPuppeteer Puppeteer { get; set; }
-    protected List<Item> Inventory { get; private set; }
+    public List<Item> Inventory { get; private set; }
     public Area2D ReachArea { get; private set; }
     [Export]
     public float Speed { get; set; }

@@ -1,39 +1,18 @@
-[gd_scene load_steps=22 format=3 uid="uid://crwq1fto4cyap"]
+[gd_scene load_steps=12 format=3 uid="uid://crwq1fto4cyap"]
 
 [ext_resource type="Texture2D" uid="uid://dpyxv0w7v7ut0" path="res://Тест/capsule_616x353.jpg" id="2_4dpe1"]
-[ext_resource type="PackedScene" uid="uid://b71q0ca8st8dx" path="res://Герой/Hero.tscn" id="2_cypyq"]
-[ext_resource type="PackedScene" uid="uid://df0scky4wawg6" path="res://Дверь/Door.tscn" id="2_tvrfw"]
+[ext_resource type="PackedScene" uid="uid://df0scky4wawg6" path="res://Статические обьекты/Дверь/Door.tscn" id="2_tvrfw"]
 [ext_resource type="PackedScene" uid="uid://1g2xsm7xfnm8" path="res://Уровень/level_1.tscn" id="2_v4244"]
-[ext_resource type="Script" uid="uid://c8kid35pjoise" path="res://Дверь/Door.cs" id="2_x1erb"]
-[ext_resource type="Texture2D" uid="uid://chjmlxh4woick" path="res://Дверь/Дверь.png" id="3_t8nhm"]
+[ext_resource type="Script" uid="uid://c8kid35pjoise" path="res://Статические обьекты/Дверь/Door.cs" id="2_x1erb"]
+[ext_resource type="Texture2D" uid="uid://chjmlxh4woick" path="res://Статические обьекты/Дверь/Дверь.png" id="3_t8nhm"]
 [ext_resource type="PackedScene" uid="uid://uf4ag3n2qucm" path="res://Предметы/test_key.tscn" id="4_62871"]
 [ext_resource type="Script" uid="uid://co0flmfmywh56" path="res://Уровень/Level.cs" id="5_qvet6"]
-[ext_resource type="Texture2D" uid="uid://cplammpr0hf2h" path="res://Уровни/Первый уровень/Background.png" id="6_v7vy0"]
-[ext_resource type="PackedScene" uid="uid://td8epsdh2fjd" path="res://Уровни/Первый уровень/Boots.tscn" id="7_x1erb"]
-[ext_resource type="PackedScene" uid="uid://cm3svn4k5mu7i" path="res://Уровни/Первый уровень/Counter.tscn" id="8_t8nhm"]
-[ext_resource type="PackedScene" uid="uid://b0esw5ojpprfe" path="res://Уровни/Первый уровень/Fishes.tscn" id="9_dlmi8"]
-[ext_resource type="Script" uid="uid://bs5njj48a8hxc" path="res://Тест/FirstDoor.cs" id="13_dlmi8"]
+[ext_resource type="PackedScene" uid="uid://bfr5ljbgkj2w1" path="res://Уровни/Первый уровень/FirstLevel.tscn" id="10_qvet6"]
 [ext_resource type="PackedScene" uid="uid://w77n7h4y4s1u" path="res://Система квестов/QuestManager.tscn" id="14_4dpe1"]
 [ext_resource type="PackedScene" uid="uid://chrttc67mdcrr" path="res://Система квестов/FirstQuest.tscn" id="15_4dpe1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8xkc"]
 size = Vector2(147.8, 277.95)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_03hxq"]
-a = Vector2(-2972, 426)
-b = Vector2(2979, 426)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_ytx64"]
-b = Vector2(0, 1500)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_ahcnj"]
-b = Vector2(0, 1500)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahcnj"]
-size = Vector2(308, 827)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4byaa"]
-size = Vector2(185.25, 66.5)
 
 [node name="TestGame" type="Node"]
 
@@ -78,72 +57,15 @@ position = Vector2(-4680, -1673)
 position = Vector2(-325, 88)
 ConnectedDoor = NodePath("../../Level/Door")
 
-[node name="FirstLevel" type="Node2D" parent="."]
-position = Vector2(5247, 161)
-script = ExtResource("5_qvet6")
-
-[node name="Sprite2D" type="Sprite2D" parent="FirstLevel"]
-texture = ExtResource("6_v7vy0")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="FirstLevel/Sprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstLevel/Sprite2D/StaticBody2D"]
-shape = SubResource("SegmentShape2D_03hxq")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="FirstLevel/Sprite2D/StaticBody2D"]
-position = Vector2(2680, -686)
-shape = SubResource("SegmentShape2D_ytx64")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="FirstLevel/Sprite2D/StaticBody2D"]
-position = Vector2(-2669, -705)
-shape = SubResource("SegmentShape2D_ahcnj")
-
-[node name="Boots" parent="FirstLevel" instance=ExtResource("7_x1erb")]
-z_index = 1
-position = Vector2(-2231, 429)
-
-[node name="Fishes" parent="FirstLevel" instance=ExtResource("9_dlmi8")]
-z_index = 1
-position = Vector2(59, 451)
-
-[node name="Hero" parent="FirstLevel" instance=ExtResource("2_cypyq")]
-position = Vector2(-431, 59)
-Speed = 1000.0
-
-[node name="Counter" parent="FirstLevel" instance=ExtResource("8_t8nhm")]
-position = Vector2(2418, 340)
-ObjectName = "Кухонный стол"
-
-[node name="Door" type="Node2D" parent="FirstLevel" node_paths=PackedStringArray("ConnectedDoor")]
-position = Vector2(-2715, -358)
-script = ExtResource("13_dlmi8")
-FailedInteraction = "Я ещё не завершил все дела"
-ConnectedDoor = NodePath("../../Level/Door")
-
-[node name="DoorSprite" type="Sprite2D" parent="FirstLevel/Door"]
-
-[node name="InteractableArea" type="Area2D" parent="FirstLevel/Door"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstLevel/Door/InteractableArea"]
-position = Vector2(70, 272.5)
-shape = SubResource("RectangleShape2D_ahcnj")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="FirstLevel/Door/InteractableArea"]
-position = Vector2(7.375, 719.75)
-shape = SubResource("RectangleShape2D_4byaa")
-
 [node name="QusetManager" parent="." node_paths=PackedStringArray("FirstQuest") instance=ExtResource("14_4dpe1")]
 FirstQuest = NodePath("Quest")
 
-[node name="Quest" parent="QusetManager" node_paths=PackedStringArray("DoorToUnlock", "FirstLevel", "Counter", "Boots", "Fishes") instance=ExtResource("15_4dpe1")]
-DoorToUnlock = NodePath("../../FirstLevel/Door")
-FirstLevel = NodePath("../../FirstLevel")
-Counter = NodePath("../../FirstLevel/Counter")
-Boots = NodePath("../../FirstLevel/Boots")
-Fishes = NodePath("../../FirstLevel/Fishes")
+[node name="Quest" parent="QusetManager" node_paths=PackedStringArray("FirstLevel") instance=ExtResource("15_4dpe1")]
+FirstLevel = NodePath("../../Level2")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0, 0, 0, 1)
+
+[node name="Level2" parent="." instance=ExtResource("10_qvet6")]
+position = Vector2(4935, -69)

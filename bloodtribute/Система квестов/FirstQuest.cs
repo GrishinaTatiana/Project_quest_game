@@ -4,26 +4,14 @@ using System;
 public partial class FirstQuest : Quest
 {
     int counter;
-
-
     [Export]
-    FirstDoor DoorToUnlock {  get; set; }
-
-    [Export]
-    Level FirstLevel { get; set; }
-
-    [Export]
-    OneTimeInteractable Counter {  get; set; }
-    [Export]
-    OneTimeInteractable Boots { get; set; }
-    [Export]
-    OneTimeInteractable Fishes { get; set; }
+    FirstLevel FirstLevel { get; set; }
 
     public override void _Ready()
     {
-        Counter.InteractionFinished += increaseCounter;
-        Boots.InteractionFinished += increaseCounter;
-        Fishes.InteractionFinished += increaseCounter;
+        FirstLevel.Counter.InteractionFinished += increaseCounter;
+        FirstLevel.Boots.InteractionFinished += increaseCounter;
+        FirstLevel.Fishes.InteractionFinished += increaseCounter;
     }
 
     void increaseCounter(IInteractable interactable)
@@ -38,7 +26,7 @@ public partial class FirstQuest : Quest
 
     protected override void FinishQuest()
     {
-        DoorToUnlock.canInteract = true;
+        FirstLevel.DoorToUnlock.canInteract = true;
         for (int i = 0; i < 7; i++)
         {
             FirstLevel.AddChild(GD.Load<PackedScene>("res://Предметы/test_key.tscn").Instantiate<TestKey>());

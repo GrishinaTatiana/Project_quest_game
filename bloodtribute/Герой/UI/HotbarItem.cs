@@ -18,7 +18,7 @@ public partial class HotbarItem : Control //Говнище
     public void SetItem(Item item)
     {
         _Item = item;
-        ItemIcon.Texture = item.Sprite.Texture;
+        ItemIcon.Texture = item.Icon;
     }
     public void SetItem()
     {

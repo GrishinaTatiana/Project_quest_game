@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dbwverohnxq41" path="res://Герой/UI/Inventory_select.png" id="2_dnbwu"]
 
 [node name="HotbarItem" type="Control"]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(84, 84)
 layout_mode = 3
 anchor_right = 0.13
 anchor_bottom = 0.231

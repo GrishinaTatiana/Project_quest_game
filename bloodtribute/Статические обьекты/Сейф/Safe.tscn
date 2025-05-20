@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnvk06ftmx8jf"]
+
+[ext_resource type="PackedScene" uid="uid://dhgva234lv3dk" path="res://Статические обьекты/BasicInteractable/MinigameInteractable.tscn" id="1_skjhe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skjhe"]
+size = Vector2(144, 304)
+
+[node name="Safe" instance=ExtResource("1_skjhe")]
+miniScreenPath = "res://Статические обьекты/Сейф/SafeMini.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea" index="0"]
+position = Vector2(72, 128)
+shape = SubResource("RectangleShape2D_skjhe")

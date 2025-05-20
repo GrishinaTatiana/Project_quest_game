@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b1nfxa2ocbnv8"]
 
-[ext_resource type="Script" uid="uid://2qlpnv7e65io" path="res://BasicInteractable/BasicInteractable.cs" id="1_q3m5r"]
+[ext_resource type="Script" uid="uid://2qlpnv7e65io" path="res://Статические обьекты/BasicInteractable/BasicInteractable.cs" id="1_q3m5r"]
 
 [node name="BasicInteractable" type="Node2D" node_paths=PackedStringArray("InteractableArea", "Sprite")]
 script = ExtResource("1_q3m5r")

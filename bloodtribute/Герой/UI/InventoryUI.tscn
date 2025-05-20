@@ -14,9 +14,9 @@ bg_color = Color(0.695058, 0.543409, 0.338818, 1)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -807.5
-offset_right = 807.5
-offset_bottom = 150.0
+offset_left = -496.0
+offset_right = 496.0
+offset_bottom = 84.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ghan7")
 script = ExtResource("1_kf0ue")
@@ -28,7 +28,7 @@ Container = NodePath("HBoxContainer")
 layout_mode = 2
 
 [node name="Left" type="TextureButton" parent="HBoxContainer"]
-custom_minimum_size = Vector2(75, 150)
+custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 texture_normal = ExtResource("1_yjohj")
 texture_pressed = ExtResource("2_kf0ue")
@@ -65,7 +65,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Right" type="TextureButton" parent="HBoxContainer"]
-custom_minimum_size = Vector2(75, 150)
+custom_minimum_size = Vector2(54, 54)
 layout_mode = 2
 texture_normal = ExtResource("4_otag5")
 texture_pressed = ExtResource("5_bg2su")

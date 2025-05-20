@@ -10,6 +10,10 @@ public partial class Hero : Character
     [Export]
     InventoryUi InventoryUi { get; set; }
 
+    public static Hero Instance;
+
+    Camera2D Camera;
+
     public event Action FinishedInteracting;
 
     public List<IInteractable> GetIInteractableAreasUnderCursor()
@@ -55,9 +59,19 @@ public partial class Hero : Character
 
     public override void _Ready()
     {
+        Instance = this;
         InventoryChanged += InventoryUi.UpdateInventory;
         Puppeteer = new PlayerPuppeteer(this);
+        Camera = GetNode<Camera2D>("Camera");
+        //Camera.LimitBottom = GetParent<Level>().BottomEdge;
         base._Ready();
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        //Camera.LimitBottom = GetParent<Level>().BottomEdge/2;
+        var tmp = GetParent<Level>();
+        base._PhysicsProcess(delta);
     }
 
     public void ChangeSelectedItem(Item item)

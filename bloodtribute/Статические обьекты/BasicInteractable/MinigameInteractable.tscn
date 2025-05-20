@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhgva234lv3dk"]
+
+[ext_resource type="PackedScene" uid="uid://b1nfxa2ocbnv8" path="res://Статические обьекты/BasicInteractable/BasicInteractable.tscn" id="1_y4smn"]
+[ext_resource type="Script" uid="uid://dqy6vkme52x" path="res://Статические обьекты/BasicInteractable/MinigameInteractable.cs" id="2_2wah6"]
+
+[node name="BasicInteractable" instance=ExtResource("1_y4smn")]
+script = ExtResource("2_2wah6")
+miniScreenPath = ""
+ObjectName = ""

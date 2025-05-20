@@ -283,11 +283,10 @@ position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_1uo57")
 debug_color = Color(0.969302, 0, 0.462251, 0.42)
 
-[node name="Camera2D" type="Camera2D" parent="." index="2"]
-zoom = Vector2(0.5, 0.5)
+[node name="Camera" type="Camera2D" parent="." index="2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
-position = Vector2(0, 16)
+position = Vector2(-5.96046e-08, 16)
 shape = SubResource("RectangleShape2D_x3v3e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]

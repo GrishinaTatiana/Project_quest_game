@@ -33,7 +33,6 @@ public partial class BasicInteractable : Node2D, IInteractable
     public virtual async Task Interact(Character character)
     {
         ScuffedServiceProvider.GetService<IMessagePrinter>().PrintMessage(InteractionText);
-        await Task.Delay(500);
         InteractionFinished?.Invoke(this);
     }
 

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://uf4ag3n2qucm"]
+
+[ext_resource type="PackedScene" uid="uid://14xh7xqp4h1i" path="res://Предмет/Item.tscn" id="1_h88fr"]
+[ext_resource type="Texture2D" uid="uid://d0vqowwjxj63r" path="res://Предметы/zolotoy_kluch.png" id="2_lpbrp"]
+[ext_resource type="Script" uid="uid://cru2funbewb5x" path="res://Предметы/TestKey.cs" id="2_y3i5w"]
+
+[node name="TestKey" instance=ExtResource("1_h88fr")]
+script = ExtResource("2_y3i5w")
+ObjectName = "Золотой ключ"
+
+[node name="Sprite" parent="." index="1"]
+scale = Vector2(0.2, 0.203)
+texture = ExtResource("2_lpbrp")

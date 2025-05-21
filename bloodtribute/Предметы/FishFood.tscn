@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://djmm568g8wv0w"]
+
+[ext_resource type="PackedScene" uid="uid://14xh7xqp4h1i" path="res://Предмет/Item.tscn" id="1_n4ljf"]
+[ext_resource type="Texture2D" uid="uid://tb3i0nlsh0hx" path="res://Предметы/РыбныйКорм.png" id="2_fwx3t"]
+
+[node name="FishFood" instance=ExtResource("1_n4ljf")]
+ObjectName = "Корм для рыб"
+_Icon = ExtResource("2_fwx3t")

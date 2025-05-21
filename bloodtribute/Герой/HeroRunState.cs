@@ -5,7 +5,8 @@ namespace BloodTribute
 {
     public class HeroRunState : HeroState
     {
-        public override HeroStates State => HeroStates.Run;
+        float CollisionRelX = float.NaN;
+
 
         public HeroRunState(Hero Parent) : base(Parent)
         {
@@ -13,34 +14,20 @@ namespace BloodTribute
 
         public override void Enter()
         {
-            GD.Print("Entered Run state");
-            Parent.Sprite.Animation = "Run"; 
+            Parent.Sprite.Animation = "Run";
+            if(CollisionRelX is float.NaN) 
+                CollisionRelX = Parent.CollisionShape.Position.X;
         }
 
         public override void Exit()
         {
-            GD.Print("Exited Run state");
             base.Exit();
         }
 
         public override void PhysicsUpdate(double delta)
         {
-            var tmp = Input.GetAxis("MoveLeft", "MoveRight");
-
-            if (tmp == 0)
-            {
-                Exit();
-                return;
-            }
-
-            Parent.Sprite.FlipH = tmp < 0;
-            Parent.Velocity = new Vector2(tmp * Parent.Speed, Parent.Gravity);
-            Parent.MoveAndSlide();
-        }
-
-        public override void Update(double delta)
-        {
-            throw new NotImplementedException();
+            Parent.Sprite.FlipH = Parent.Velocity.X < 0;
+            //Parent.CollisionShape.Position = new Vector2((Parent.Velocity.X < 0? -1: 1) * CollisionRelX, Parent.CollisionShape.Position.Y);
         }
     }
 }

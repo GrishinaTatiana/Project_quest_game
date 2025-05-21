@@ -1,0 +1,156 @@
+[gd_scene load_steps=20 format=3 uid="uid://bfr5ljbgkj2w1"]
+
+[ext_resource type="PackedScene" uid="uid://bnjeminrdn7x4" path="res://Уровень/Level.tscn" id="1_1px8p"]
+[ext_resource type="Script" uid="uid://cpq246g6j65ik" path="res://Уровни/Первый уровень/FirstLevel.cs" id="2_ahcnj"]
+[ext_resource type="Texture2D" uid="uid://cplammpr0hf2h" path="res://Уровни/Первый уровень/Background.png" id="2_jj4uh"]
+[ext_resource type="PackedScene" uid="uid://td8epsdh2fjd" path="res://Уровни/Первый уровень/Boots.tscn" id="3_at6na"]
+[ext_resource type="PackedScene" uid="uid://b71q0ca8st8dx" path="res://Герой/Hero.tscn" id="7_03hxq"]
+[ext_resource type="Script" uid="uid://bs5njj48a8hxc" path="res://Тест/FirstDoor.cs" id="8_ahcnj"]
+[ext_resource type="PackedScene" uid="uid://dnvk06ftmx8jf" path="res://Статические обьекты/Сейф/Safe.tscn" id="8_ytx64"]
+[ext_resource type="PackedScene" uid="uid://cdqy2xvl03bvo" path="res://Статические обьекты/Доска/Board.tscn" id="10_4byaa"]
+[ext_resource type="Texture2D" uid="uid://bqd857rdjgv01" path="res://Уровни/Первый уровень/Counter.png" id="10_csf12"]
+[ext_resource type="Script" uid="uid://dqy6vkme52x" path="res://Статические обьекты/BasicInteractable/MinigameInteractable.cs" id="11_csf12"]
+[ext_resource type="PackedScene" uid="uid://b0esw5ojpprfe" path="res://Уровни/Первый уровень/Fishes.tscn" id="11_rmho5"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_03hxq"]
+a = Vector2(-2972, 426)
+b = Vector2(2979, 426)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ytx64"]
+b = Vector2(0, 1500)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ahcnj"]
+b = Vector2(0, 1500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahcnj"]
+size = Vector2(308, 827)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4byaa"]
+size = Vector2(185.25, 66.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmho5"]
+size = Vector2(219.5, 202)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csf12"]
+size = Vector2(402, 783)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmtth"]
+size = Vector2(249, 63)
+
+[node name="Level" node_paths=PackedStringArray("DoorToUnlock", "Fishes", "MicrowaveMini", "SafeMini") instance=ExtResource("1_1px8p")]
+script = ExtResource("2_ahcnj")
+DoorToUnlock = NodePath("Door")
+Fishes = NodePath("BasicInteractable")
+MicrowaveMini = NodePath("Microwave")
+SafeMini = NodePath("Safe")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_jj4uh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" index="0"]
+shape = SubResource("SegmentShape2D_03hxq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" index="1"]
+position = Vector2(2680, -686)
+shape = SubResource("SegmentShape2D_ytx64")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" index="2"]
+position = Vector2(-2669, -705)
+shape = SubResource("SegmentShape2D_ahcnj")
+
+[node name="Boots" parent="." index="1" instance=ExtResource("3_at6na")]
+z_index = 1
+position = Vector2(-2231, 429)
+
+[node name="Hero" parent="." index="2" instance=ExtResource("7_03hxq")]
+position = Vector2(-433, 10)
+scale = Vector2(1, 1)
+Speed = 1000.0
+Gravity = 1000.0
+
+[node name="Door" type="Node2D" parent="." index="3"]
+position = Vector2(-2715, -358)
+script = ExtResource("8_ahcnj")
+cantleavetext = "Я ещё не завершила все дела домаф"
+
+[node name="DoorSprite" type="Sprite2D" parent="Door" index="0"]
+
+[node name="InteractableArea" type="Area2D" parent="Door" index="1"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/InteractableArea" index="0"]
+position = Vector2(70, 272.5)
+shape = SubResource("RectangleShape2D_ahcnj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Door/InteractableArea" index="1"]
+position = Vector2(7.375, 719.75)
+shape = SubResource("RectangleShape2D_4byaa")
+
+[node name="Safe" parent="." index="4" instance=ExtResource("8_ytx64")]
+position = Vector2(500, 41)
+
+[node name="Board" parent="." index="5" instance=ExtResource("10_4byaa")]
+position = Vector2(300, -520)
+
+[node name="Microwave" type="Node2D" parent="." index="6" node_paths=PackedStringArray("InteractableArea", "Sprite")]
+position = Vector2(2715, -15)
+script = ExtResource("11_csf12")
+miniScreenPath = "res://Статические обьекты/Микроволновка/MicrowaveMini.tscn"
+InteractableArea = NodePath("InteractableArea")
+Sprite = NodePath("Sprite")
+
+[node name="Sprite" type="Sprite2D" parent="Microwave" index="0"]
+
+[node name="InteractableArea" type="Area2D" parent="Microwave" index="1"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Microwave/InteractableArea" index="0"]
+position = Vector2(35.25, -5)
+shape = SubResource("RectangleShape2D_rmho5")
+
+[node name="Fridge" type="Node2D" parent="." index="7" node_paths=PackedStringArray("InteractableArea", "Sprite")]
+position = Vector2(1065, -430)
+script = ExtResource("11_csf12")
+miniScreenPath = "res://Статические обьекты/Холодос/FridgeMini.tscn"
+InteractableArea = NodePath("InteractableArea")
+Sprite = NodePath("Sprite")
+
+[node name="Sprite" type="Sprite2D" parent="Fridge" index="0"]
+
+[node name="InteractableArea" type="Area2D" parent="Fridge" index="1"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fridge/InteractableArea" index="0"]
+position = Vector2(194, 381.5)
+shape = SubResource("RectangleShape2D_csf12")
+
+[node name="DeskDrawer" type="Node2D" parent="." index="8" node_paths=PackedStringArray("InteractableArea", "Sprite")]
+position = Vector2(661, 28)
+script = ExtResource("11_csf12")
+miniScreenPath = "res://Статические обьекты/Ящик стола/DeskDrawerMini.tscn"
+InteractableArea = NodePath("InteractableArea")
+Sprite = NodePath("Sprite")
+
+[node name="Sprite" type="Sprite2D" parent="DeskDrawer" index="0"]
+
+[node name="InteractableArea" type="Area2D" parent="DeskDrawer" index="1"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeskDrawer/InteractableArea" index="0"]
+position = Vector2(123.5, 30.5)
+shape = SubResource("RectangleShape2D_bmtth")
+
+[node name="Counter" type="Sprite2D" parent="." index="9"]
+z_index = 5
+position = Vector2(2418, 340)
+texture = ExtResource("10_csf12")
+
+[node name="BasicInteractable" parent="." index="10" instance=ExtResource("11_rmho5")]
+z_index = 5
+position = Vector2(60, 451)

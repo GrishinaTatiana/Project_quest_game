@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnjw63gt5omma"]
+
+[ext_resource type="PackedScene" uid="uid://cevqu155kry03" path="res://МиниЭкраны/MiniScreen.tscn" id="1_rut2c"]
+[ext_resource type="Texture2D" uid="uid://bxpkjbluokrn1" path="res://Статические обьекты/Микроволновка/микров.png" id="2_2bghd"]
+[ext_resource type="Script" uid="uid://btjxxq3k0yyh0" path="res://Статические обьекты/Микроволновка/MicrowaveMini.cs" id="2_f0u0c"]
+[ext_resource type="Texture2D" uid="uid://b6vi5a2qud865" path="res://Статические обьекты/Микроволновка/микровРАВПЕН.png" id="4_n8llm"]
+[ext_resource type="Texture2D" uid="uid://dbwu22xbeuk4l" path="res://Статические обьекты/Микроволновка/микроЦЦВА.png" id="5_ge7js"]
+[ext_resource type="Texture2D" uid="uid://dxadfcpwigdls" path="res://Статические обьекты/Микроволновка/микроВА.png" id="6_n8llm"]
+
+[node name="CanvasLayer" instance=ExtResource("1_rut2c")]
+script = ExtResource("2_f0u0c")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_2bghd")
+
+[node name="Button" type="Button" parent="Sprite2D" index="0"]
+offset_left = -496.0
+offset_top = -212.0
+offset_right = 528.0
+offset_bottom = 348.0
+flat = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="1"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("4_n8llm")
+
+[node name="Button" type="Button" parent="Sprite2D2" index="0"]
+offset_left = -488.0
+offset_top = -212.0
+offset_right = 304.0
+offset_bottom = 316.0
+flat = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="." index="2"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("5_ge7js")
+
+[node name="Button" type="Button" parent="Sprite2D3" index="0"]
+offset_left = -488.0
+offset_top = -212.0
+offset_right = 520.0
+offset_bottom = 348.0
+flat = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="." index="3"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("6_n8llm")

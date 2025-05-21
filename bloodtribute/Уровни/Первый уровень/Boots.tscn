@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://td8epsdh2fjd"]
+
+[ext_resource type="PackedScene" uid="uid://b1nfxa2ocbnv8" path="res://Статические обьекты/BasicInteractable/BasicInteractable.tscn" id="1_y3nbl"]
+[ext_resource type="Script" uid="uid://dtkxqlbyslft4" path="res://Статические обьекты/BasicInteractable/OneTimeInteractable.cs" id="2_2rlb4"]
+[ext_resource type="Texture2D" uid="uid://nluswqu0hnmq" path="res://Уровни/Первый уровень/Boots.png" id="2_o7oeh"]
+
+[node name="Boots" instance=ExtResource("1_y3nbl")]
+script = ExtResource("2_2rlb4")
+InteractionText = "Надел ботинки"
+FailedInteraction = "Я уже оделся"
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_o7oeh")

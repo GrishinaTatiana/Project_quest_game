@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cumnhhs038efq"]
+
+[ext_resource type="PackedScene" uid="uid://14xh7xqp4h1i" path="res://Предмет/Item.tscn" id="1_tssu4"]
+[ext_resource type="Texture2D" uid="uid://br240pr0tcbsr" path="res://Предметы/Gun.png" id="2_1ld3t"]
+
+[node name="Item" instance=ExtResource("1_tssu4")]
+_Icon = ExtResource("2_1ld3t")

@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://jf2f8uvsjpg3"]
+
+[ext_resource type="Texture2D" uid="uid://di3x5x6xt5je5" path="res://Герой/UI/Inventory_Slot.png" id="1_0tofi"]
+[ext_resource type="Script" uid="uid://dwwva5gr5w4bs" path="res://Герой/UI/HotbarItem.cs" id="1_dnbwu"]
+[ext_resource type="Texture2D" uid="uid://dbwverohnxq41" path="res://Герой/UI/Inventory_select.png" id="2_dnbwu"]
+
+[node name="HotbarItem" type="Control"]
+custom_minimum_size = Vector2(84, 84)
+layout_mode = 3
+anchor_right = 0.13
+anchor_bottom = 0.231
+offset_right = 0.23999
+offset_bottom = 0.311996
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dnbwu")
+
+[node name="Background" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0tofi")
+
+[node name="Selected" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dnbwu")
+
+[node name="ItemIcon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck77g7prn8tlx"]
+
+[ext_resource type="PackedScene" uid="uid://cevqu155kry03" path="res://МиниЭкраны/MiniScreen.tscn" id="1_1qar6"]
+[ext_resource type="Texture2D" uid="uid://byajsf6wel72l" path="res://Статические обьекты/Холодос/холодос.png" id="2_aij0w"]
+[ext_resource type="Script" uid="uid://ckldfix4ysu73" path="res://Статические обьекты/Холодос/FridgeMini.cs" id="2_i1lf7"]
+[ext_resource type="Texture2D" uid="uid://bqfmoix54x4r5" path="res://Статические обьекты/Холодос/холодосопенг.png" id="3_6btgp"]
+[ext_resource type="PackedScene" uid="uid://btqmm4dt3s3uh" path="res://Предметы/Breakfast.tscn" id="5_88xad"]
+
+[node name="CanvasLayer" node_paths=PackedStringArray("Breakfast") instance=ExtResource("1_1qar6")]
+script = ExtResource("2_i1lf7")
+Breakfast = NodePath("Item")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_aij0w")
+
+[node name="Button" type="Button" parent="Sprite2D" index="0"]
+offset_left = -736.0
+offset_top = -500.0
+offset_right = 488.0
+offset_bottom = 540.0
+flat = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="1"]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("3_6btgp")
+
+[node name="Button" type="Button" parent="Sprite2D2" index="0"]
+offset_left = -344.0
+offset_top = -44.0
+offset_right = 120.0
+offset_bottom = 132.0
+flat = true
+
+[node name="Item" parent="." index="3" instance=ExtResource("5_88xad")]
+visible = false

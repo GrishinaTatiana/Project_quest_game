@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b6b0ulbqwwxo7"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_awdab"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b0u5g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h5vyp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_65xvd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cni23"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2gixg"]
+
+[resource]
+HScrollBar/icons/decrement = SubResource("ImageTexture_awdab")
+HScrollBar/icons/decrement_highlight = SubResource("ImageTexture_awdab")
+HScrollBar/icons/decrement_pressed = SubResource("ImageTexture_awdab")
+HScrollBar/icons/increment = SubResource("ImageTexture_awdab")
+HScrollBar/icons/increment_highlight = SubResource("ImageTexture_awdab")
+HScrollBar/icons/increment_pressed = SubResource("ImageTexture_awdab")
+HScrollBar/styles/grabber = SubResource("StyleBoxEmpty_b0u5g")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_h5vyp")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_65xvd")
+HScrollBar/styles/scroll = SubResource("StyleBoxEmpty_cni23")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_2gixg")

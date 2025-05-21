@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cis2bbcbwbljj"]
+
+[ext_resource type="PackedScene" uid="uid://dhgva234lv3dk" path="res://Статические обьекты/BasicInteractable/MinigameInteractable.tscn" id="1_6xo11"]
+
+[node name="Fridge" instance=ExtResource("1_6xo11")]
+miniScreenPath = "res://Статические обьекты/Холодос/FridgeMini.tscn"

@@ -6,9 +6,11 @@ public partial class FirstLevel : Level
     [Export]
     public FirstDoor DoorToUnlock { get; set; }
     [Export]
-    public OneTimeInteractable Counter { get; set; }
+    public FishesTank Fishes { get; set; }
+
     [Export]
-    public OneTimeInteractable Boots { get; set; }
+    public MinigameInteractable MicrowaveMini { get; set; }
+
     [Export]
-    public OneTimeInteractable Fishes { get; set; }
+    public MinigameInteractable SafeMini { get; set; }
 }

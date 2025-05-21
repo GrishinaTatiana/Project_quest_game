@@ -7,11 +7,14 @@ public partial class MinigameInteractable : BasicInteractable
     [Export]
     string miniScreenPath { get; set; }
 
+    public event Action SolvedGame;
+
     MiniScreen miniScreen { get; set; }
 
     public override void _Ready()
     {
         miniScreen = GD.Load<PackedScene>(miniScreenPath).Instantiate<MiniScreen>();
+        miniScreen.SolvedGame += () => SolvedGame?.Invoke();
         base._Ready();
     }
 

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public partial class Character : CharacterBody2D
 {
     public AnimatedSprite2D Sprite { get; private set; }
+    public CollisionShape2D CollisionShape { get; private set; }
     protected IPuppeteer Puppeteer { get; set; }
     public List<Item> Inventory { get; private set; }
     public Area2D ReachArea { get; private set; }
@@ -21,6 +22,7 @@ public partial class Character : CharacterBody2D
     {
         Sprite = GetNode<AnimatedSprite2D>("Sprite");
         ReachArea = GetNode<Area2D>("ReachArea");
+        CollisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
         Inventory = [];
         base._Ready();
     }

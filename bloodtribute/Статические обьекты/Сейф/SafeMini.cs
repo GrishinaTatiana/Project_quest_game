@@ -56,6 +56,7 @@ public partial class SafeMini : MiniScreen
         Hero.Instance.InsertItem(ID);
         Gun = null;
         ID = null;
+        finishGame();
     }
 
 }

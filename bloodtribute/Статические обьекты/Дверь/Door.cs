@@ -14,6 +14,9 @@ public partial class Door : Node2D, IInteractable
     public string FailedInteraction { get; set; }
 
     [Export]
+    public Node2D SpawnPoint;
+
+    [Export]
     public Door ConnectedDoor;
 
     public event Action<IInteractable> InteractionFinished;
@@ -22,7 +25,7 @@ public partial class Door : Node2D, IInteractable
     {
         character.GetParent().RemoveChild(character);
         ConnectedDoor.GetParent().AddChild(character);
-        character.Position = ConnectedDoor.Position;
+        character.GlobalPosition = ConnectedDoor.SpawnPoint.GlobalPosition;
         InteractionFinished?.Invoke(this);
         await Task.Delay(1000);
     }

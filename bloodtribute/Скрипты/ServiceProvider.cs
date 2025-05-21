@@ -29,10 +29,17 @@ namespace BloodTribute
     public interface IMessagePrinter
     {
         void PrintMessage(string message);
+
+        void PrintGenericFailedMsg();
     }
 
     public class ConsolePrinter : IMessagePrinter
     {
+        public void PrintGenericFailedMsg()
+        {
+            GD.Print("Не думаю что это сработает");
+        }
+
         public void PrintMessage(string message)
         {
            GD.Print(message);

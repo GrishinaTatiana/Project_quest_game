@@ -9,16 +9,15 @@ public partial class FirstQuest : Quest
 
     public override void _Ready()
     {
-        FirstLevel.Counter.InteractionFinished += increaseCounter;
-        FirstLevel.Boots.InteractionFinished += increaseCounter;
-        FirstLevel.Fishes.InteractionFinished += increaseCounter;
+        FirstLevel.SafeMini.SolvedGame += increaseCounter;
+        FirstLevel.MicrowaveMini.SolvedGame += increaseCounter;
+        FirstLevel.Fishes.InteractionFinished += (j) => increaseCounter();
     }
 
-    void increaseCounter(IInteractable interactable)
+    void increaseCounter()
     {
-        interactable.InteractionFinished -= increaseCounter;
         counter++;
-        if(counter == 1)
+        if(counter == 3)
         {
             FinishQuest();
         }
@@ -27,11 +26,12 @@ public partial class FirstQuest : Quest
     protected override void FinishQuest()
     {
         FirstLevel.DoorToUnlock.canInteract = true;
+        /*
         for (int i = 0; i < 7; i++)
         {
             FirstLevel.AddChild(GD.Load<PackedScene>("res://Предметы/test_key.tscn").Instantiate<TestKey>());
             FirstLevel.AddChild(GD.Load<PackedScene>("res://Предмет/Item.tscn").Instantiate<Item>());
-        }
+        }*/
         base.FinishQuest();
     }
 }

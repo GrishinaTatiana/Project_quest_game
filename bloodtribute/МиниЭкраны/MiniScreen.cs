@@ -13,6 +13,8 @@ public partial class MiniScreen : CanvasLayer
     [Signal]
     public delegate void ExitEventHandler();
 
+    public event Action SolvedGame;
+
     private Vector2 _baseResolution;
 
     public override void _Ready()
@@ -43,5 +45,10 @@ public partial class MiniScreen : CanvasLayer
             }
         }
         _baseResolution = currentSize;
+    }
+
+    protected void finishGame()
+    {
+        SolvedGame?.Invoke();
     }
 }

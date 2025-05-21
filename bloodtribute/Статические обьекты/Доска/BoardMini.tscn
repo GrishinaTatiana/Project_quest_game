@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtx7nclvqiv25"]
+
+[ext_resource type="PackedScene" uid="uid://cevqu155kry03" path="res://МиниЭкраны/MiniScreen.tscn" id="1_5bles"]
+[ext_resource type="Texture2D" uid="uid://dxxgkqnojsbqw" path="res://Статические обьекты/Доска/11.png" id="2_ft64i"]
+
+[node name="CanvasLayer" instance=ExtResource("1_5bles")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_ft64i")

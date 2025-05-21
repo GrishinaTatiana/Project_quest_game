@@ -15,7 +15,6 @@ Gun = NodePath("Gun")
 ID = NodePath("ID")
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(1, 1)
 texture = ExtResource("2_us71v")
 
 [node name="0" type="Button" parent="Sprite2D" index="0"]

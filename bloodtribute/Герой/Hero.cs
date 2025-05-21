@@ -6,7 +6,7 @@ using System.Linq;
 
 public partial class Hero : Character
 {
-    Item SelectedItem;
+    public Item SelectedItem { get; set; }
     [Export]
     InventoryUi InventoryUi { get; set; }
 
@@ -50,9 +50,7 @@ public partial class Hero : Character
 
     public async void Interact(IInteractable interactable)
     {
-        if (!interactable.CanInteract())
-            ScuffedServiceProvider.GetService<IMessagePrinter>().PrintMessage(interactable.FailedInteraction);
-        else
+        if (interactable.CanInteract())
             await interactable.Interact(this);
         FinishedInteracting?.Invoke();
     }
@@ -69,8 +67,15 @@ public partial class Hero : Character
 
     public override void _PhysicsProcess(double delta)
     {
-        //Camera.LimitBottom = GetParent<Level>().BottomEdge/2;
+        /*
+        var y = GetViewport().GetVisibleRect().Size.Y/2;
+        var tmp1 = GetParent<Level>().BottomEdge;
+
+        Camera.Offset = new Vector2(Camera.Offset.X, (Position.Y + (tmp1 - (Position.Y + y))));
+
+        //Camera.LimitBottom = GetParent<Level>().BottomEdge;
         var tmp = GetParent<Level>();
+        */
         base._PhysicsProcess(delta);
     }
 

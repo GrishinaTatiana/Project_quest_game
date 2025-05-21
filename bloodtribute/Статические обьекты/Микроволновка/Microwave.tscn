@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://53jdhinrehbs"]
+
+[ext_resource type="PackedScene" uid="uid://dhgva234lv3dk" path="res://Статические обьекты/BasicInteractable/MinigameInteractable.tscn" id="1_g8tsw"]
+
+[node name="BasicInteractable" instance=ExtResource("1_g8tsw")]
+miniScreenPath = "res://Статические обьекты/Микроволновка/MicrowaveMini.tscn"

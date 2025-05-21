@@ -36,7 +36,9 @@ internal class PlayerPuppeteer : IPuppeteer
 
         HeroState tmp = new HeroRunState(hero);
         StateDecider.Add((tmp, (hero) => Input.GetAxis("MoveLeft", "MoveRight") != 0));
-        StateProcessers[tmp] = (hero) => { hero.Velocity = new Vector2(Input.GetAxis("MoveLeft", "MoveRight") * hero.Speed, hero.Gravity); };
+        StateProcessers[tmp] = (hero) => { 
+            hero.Velocity = new Vector2(Input.GetAxis("MoveLeft", "MoveRight") * hero.Speed, hero.Gravity); 
+        };
 
         StateConditionChecker interactStateChecker = (hero) =>
         {
@@ -58,7 +60,8 @@ internal class PlayerPuppeteer : IPuppeteer
         tmp = new HeroInteractState(hero);
         StateProcesser interactStateProcess = (hero) =>
         {
-            if(!allowDefaulting && lastlyInteracted == CurrentInteractables[0])
+            hero.Velocity = new Vector2(0, hero.Gravity);
+            if (!allowDefaulting && lastlyInteracted == CurrentInteractables[0])
                 return;
             isBlockedInputs = true;
             lastlyInteracted = CurrentInteractables[0];

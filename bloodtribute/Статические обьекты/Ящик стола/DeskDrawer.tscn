@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://7lvulk74whgh"]
+
+[ext_resource type="PackedScene" uid="uid://dhgva234lv3dk" path="res://Статические обьекты/BasicInteractable/MinigameInteractable.tscn" id="1_eunw3"]
+
+[node name="DeskDrawer" instance=ExtResource("1_eunw3")]
+miniScreenPath = "res://Статические обьекты/Ящик стола/DeskDrawerMini.tscn"

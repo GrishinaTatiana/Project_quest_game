@@ -5,10 +5,13 @@ using BloodTribute;
 
 public partial class Item : Node2D, IInteractable
 {
+    
+    public int ID {  get; private set; }
+
     public Area2D InteractableArea { get; private set; }
     public Sprite2D Sprite { get; private set; }
     [Export]
-    public string ObjectName { get; private set; }
+    public string ObjectName { get; private set; } // Надо как то по нормальнгому имплементировать систему ID
 
     [Export]
     public string FailedInteraction { get; set; }
@@ -19,6 +22,11 @@ public partial class Item : Node2D, IInteractable
     public Texture2D _Icon;
 
     public event Action<IInteractable> InteractionFinished;
+
+    public Item()
+    {
+        ID = GetId();
+    }
 
     public override void _Ready()
     {
@@ -41,4 +49,22 @@ public partial class Item : Node2D, IInteractable
     {
         return true;
     }
+
+
+
+    static int CurrentId = 0;
+
+    static int GetId()
+    {
+        return CurrentId++;
+    }
+
+
+
+
+
+
+
+
+
 }

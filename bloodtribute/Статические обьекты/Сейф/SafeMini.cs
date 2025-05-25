@@ -8,6 +8,9 @@ public partial class SafeMini : MiniScreen
 
     [Export] Item Gun;
     [Export] Item ID;
+    [Export] AudioStreamPlayer AudioOpen;
+    [Export] AudioStreamPlayer AudioClose;
+    [Export] AudioStreamPlayer AudioButton;
 
 
     Sprite2D OpenedSprite;
@@ -24,21 +27,34 @@ public partial class SafeMini : MiniScreen
 
         var child = GetChild(0);
 
-        for(int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++)
         {
             int current = i;
-            child.GetChild<Button>(i).Pressed += () => addNumber(current);
+            child.GetChild<Button>(i).Pressed += () =>
+            {
+                addNumber(current);
+                AudioButton.Play();
+            };
+
         }
 
-        child.GetChild<Button>(10).Pressed += () => { if (currentBuffer.Equals(Password)) openSafe(); } ;
-        child.GetChild<Button>(11).Pressed += () => currentBuffer = "";
+        child.GetChild<Button>(10).Pressed += () =>
+
+        {
+            AudioButton.Play();
+            if (currentBuffer.Equals(Password)) openSafe();
+        };
+        child.GetChild<Button>(11).Pressed += () => {
+            AudioButton.Play();
+            currentBuffer = "";
+        };
 
         base._Ready();
     }
 
     void addNumber(int number)
     {
-        if(currentBuffer.Length < 4)
+        if (currentBuffer.Length < 4)
             currentBuffer = currentBuffer + number;
     }
 
@@ -46,10 +62,12 @@ public partial class SafeMini : MiniScreen
     {
         Background.Hide();
         OpenedSprite.Show();
+        AudioOpen.Play();
     }
 
     void grabItems()
     {
+        AudioClose.Play();
         OpenedSprite.Hide();
         EmptySprite.Show();
         Hero.Instance.InsertItem(Gun);

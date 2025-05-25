@@ -19,6 +19,9 @@ public partial class BasicInteractable : Node2D, IInteractable
     [Export]
     public string FailedInteraction { get; set; }
 
+    [Export]
+    public AudioStreamPlayer audio { get; set; }
+
     public event Action<IInteractable> InteractionFinished;
 
     public override void _Ready()

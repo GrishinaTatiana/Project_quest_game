@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://dybkddf8fhxel" path="res://Предмет/Item.cs" id="1_mtfh8"]
 [ext_resource type="Texture2D" uid="uid://darlt5cni8bd3" path="res://icon.svg" id="2_qtdfu"]
 
-[node name="Item" type="Node2D"]
+[node name="Item" type="Node2D" node_paths=PackedStringArray("audio")]
 script = ExtResource("1_mtfh8")
 ObjectName = "Предмет"
+audio = NodePath("AudioStreamPlayer")
 
 [node name="InteractableArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -13,3 +14,5 @@ collision_mask = 0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_qtdfu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

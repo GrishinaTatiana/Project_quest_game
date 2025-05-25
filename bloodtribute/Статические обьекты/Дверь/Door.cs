@@ -19,6 +19,9 @@ public partial class Door : Node2D, IInteractable
     [Export]
     public Door ConnectedDoor;
 
+    [Export]
+    public AudioStreamPlayer audio { get; set; }
+
     public event Action<IInteractable> InteractionFinished;
 
     public async Task Interact(Character character)

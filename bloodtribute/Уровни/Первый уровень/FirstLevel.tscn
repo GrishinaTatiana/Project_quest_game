@@ -95,12 +95,13 @@ position = Vector2(500, 41)
 [node name="Board" parent="." index="5" instance=ExtResource("10_4byaa")]
 position = Vector2(300, -520)
 
-[node name="Microwave" type="Node2D" parent="." index="6" node_paths=PackedStringArray("InteractableArea", "Sprite")]
+[node name="Microwave" type="Node2D" parent="." index="6" node_paths=PackedStringArray("InteractableArea", "Sprite", "audio")]
 position = Vector2(2715, -15)
 script = ExtResource("11_csf12")
 miniScreenPath = "res://Статические обьекты/Микроволновка/MicrowaveMini.tscn"
 InteractableArea = NodePath("InteractableArea")
 Sprite = NodePath("Sprite")
+audio = NodePath("AudioStreamPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="Microwave" index="0"]
 
@@ -112,12 +113,15 @@ collision_mask = 2
 position = Vector2(35.25, -5)
 shape = SubResource("RectangleShape2D_rmho5")
 
-[node name="Fridge" type="Node2D" parent="." index="7" node_paths=PackedStringArray("InteractableArea", "Sprite")]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Microwave" index="2"]
+
+[node name="Fridge" type="Node2D" parent="." index="7" node_paths=PackedStringArray("InteractableArea", "Sprite", "audio")]
 position = Vector2(1065, -430)
 script = ExtResource("11_csf12")
 miniScreenPath = "res://Статические обьекты/Холодос/FridgeMini.tscn"
 InteractableArea = NodePath("InteractableArea")
 Sprite = NodePath("Sprite")
+audio = NodePath("AudioStreamPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="Fridge" index="0"]
 
@@ -129,12 +133,15 @@ collision_mask = 2
 position = Vector2(194, 381.5)
 shape = SubResource("RectangleShape2D_csf12")
 
-[node name="DeskDrawer" type="Node2D" parent="." index="8" node_paths=PackedStringArray("InteractableArea", "Sprite")]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Fridge" index="2"]
+
+[node name="DeskDrawer" type="Node2D" parent="." index="8" node_paths=PackedStringArray("InteractableArea", "Sprite", "audio")]
 position = Vector2(661, 28)
 script = ExtResource("11_csf12")
 miniScreenPath = "res://Статические обьекты/Ящик стола/DeskDrawerMini.tscn"
 InteractableArea = NodePath("InteractableArea")
 Sprite = NodePath("Sprite")
+audio = NodePath("AudioStreamPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="DeskDrawer" index="0"]
 
@@ -145,6 +152,8 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeskDrawer/InteractableArea" index="0"]
 position = Vector2(123.5, 30.5)
 shape = SubResource("RectangleShape2D_bmtth")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DeskDrawer" index="2"]
 
 [node name="Counter" type="Sprite2D" parent="." index="9"]
 z_index = 5

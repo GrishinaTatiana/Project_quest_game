@@ -51,7 +51,10 @@ public partial class Hero : Character
     public async void Interact(IInteractable interactable)
     {
         if (interactable.CanInteract())
+        {
+            interactable.audio.Play();
             await interactable.Interact(this);
+        }
         FinishedInteracting?.Invoke();
     }
 

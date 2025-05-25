@@ -18,7 +18,7 @@ internal class PlayerPuppeteer : IPuppeteer
     List<(HeroState, StateConditionChecker)> StateDecider;
     Dictionary<HeroState, StateProcesser> StateProcessers;
 
-    List<IInteractable> CurrentInteractables;
+    public List<IInteractable> CurrentInteractables;
 
     bool isBlockedInputs = false;
     bool allowDefaulting = true;

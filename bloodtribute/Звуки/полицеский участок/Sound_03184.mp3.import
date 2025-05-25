@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dgk60prinamsc"
+path="res://.godot/imported/Sound_03184.mp3-161562710d58decb565fbe5582d2d7aa.mp3str"
+
+[deps]
+
+source_file="res://Звуки/полицеский участок/Sound_03184.mp3"
+dest_files=["res://.godot/imported/Sound_03184.mp3-161562710d58decb565fbe5582d2d7aa.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

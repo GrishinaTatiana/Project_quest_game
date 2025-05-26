@@ -30,7 +30,7 @@ public partial class Door : Node2D, IInteractable
         ConnectedDoor.GetParent<Level>().Enter(h);
         h.GlobalPosition = ConnectedDoor.SpawnPoint.GlobalPosition;
         InteractionFinished?.Invoke(this);
-        await Task.Delay(1000);
+        //await Task.Delay(1000);
     }
 
     public override void _Ready()

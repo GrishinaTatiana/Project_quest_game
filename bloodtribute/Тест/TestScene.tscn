@@ -16,7 +16,7 @@ FirstQuest = NodePath("Quest")
 FirstLevel = NodePath("../../Level")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0, 0, 0, 1)
+color = Color(0.501407, 0.501406, 0.501406, 1)
 
 [node name="Level" parent="." instance=ExtResource("3_tvrfw")]
 

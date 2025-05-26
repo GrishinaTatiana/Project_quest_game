@@ -208,10 +208,11 @@ shape = SubResource("RectangleShape2D_x3v3e")
 Hero = NodePath("../..")
 
 [node name="PointLight2D" type="PointLight2D" parent="." index="5"]
+color = Color(0.501407, 0.501406, 0.501406, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 1023
 texture = ExtResource("7_fphux")
-texture_scale = 3.5
+texture_scale = 3.0
 
 [node name="Sounds" type="Node" parent="." index="6"]
 

@@ -1,128 +1,24 @@
-[gd_scene load_steps=18 format=3 uid="uid://crwq1fto4cyap"]
+[gd_scene load_steps=6 format=3 uid="uid://crwq1fto4cyap"]
 
-[ext_resource type="Texture2D" uid="uid://dpyxv0w7v7ut0" path="res://Тест/capsule_616x353.jpg" id="2_4dpe1"]
-[ext_resource type="PackedScene" uid="uid://df0scky4wawg6" path="res://Статические обьекты/Дверь/Door.tscn" id="2_tvrfw"]
-[ext_resource type="PackedScene" uid="uid://1g2xsm7xfnm8" path="res://Уровень/level_1.tscn" id="2_v4244"]
-[ext_resource type="Script" uid="uid://c8kid35pjoise" path="res://Статические обьекты/Дверь/Door.cs" id="2_x1erb"]
-[ext_resource type="Texture2D" uid="uid://chjmlxh4woick" path="res://Статические обьекты/Дверь/Дверь.png" id="3_t8nhm"]
-[ext_resource type="PackedScene" uid="uid://uf4ag3n2qucm" path="res://Предметы/test_key.tscn" id="4_62871"]
-[ext_resource type="Script" uid="uid://co0flmfmywh56" path="res://Уровень/Level.cs" id="5_qvet6"]
+[ext_resource type="Script" uid="uid://b1ofnmatwwxls" path="res://Тест/TestScene.cs" id="1_62871"]
+[ext_resource type="PackedScene" uid="uid://bfr5ljbgkj2w1" path="res://Уровни/Первый уровень/FirstLevel.tscn" id="3_tvrfw"]
+[ext_resource type="PackedScene" uid="uid://cp3ij2eluwy44" path="res://Уровни/Второй уровень/SecondLevel.tscn" id="4_62871"]
 [ext_resource type="PackedScene" uid="uid://w77n7h4y4s1u" path="res://Система квестов/QuestManager.tscn" id="14_4dpe1"]
 [ext_resource type="PackedScene" uid="uid://chrttc67mdcrr" path="res://Система квестов/FirstQuest.tscn" id="15_4dpe1"]
-[ext_resource type="Texture2D" uid="uid://q06lo8hf7b6k" path="res://Уровни/Второй уровень/уууууу.png" id="20_j4bkq"]
-[ext_resource type="Script" uid="uid://g1vnboa2w1fl" path="res://Уровни/Второй уровень/SecondDoor.cs" id="21_c73vr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8xkc"]
-size = Vector2(147.8, 277.95)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_03uyo"]
-a = Vector2(-4559, 426)
-b = Vector2(4733, 426)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_5x14y"]
-b = Vector2(0, 1500)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_kln88"]
-b = Vector2(0, 1500)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kln88"]
-size = Vector2(369.147, 816.192)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7d4br"]
-size = Vector2(262.625, 66.5)
 
 [node name="TestGame" type="Node"]
-
-[node name="Level" type="Node2D" parent="."]
-position = Vector2(-251, 683)
-script = ExtResource("5_qvet6")
-
-[node name="Sprite2D" type="Sprite2D" parent="Level"]
-position = Vector2(-197, -96.9999)
-scale = Vector2(7.35633, 5.98725)
-texture = ExtResource("2_4dpe1")
-
-[node name="Door" type="Node2D" parent="Level" node_paths=PackedStringArray("ConnectedDoor")]
-position = Vector2(-1142, -663)
-rotation = 0.0658633
-scale = Vector2(2.15473, -1.24535)
-script = ExtResource("2_x1erb")
-ConnectedDoor = NodePath("../../Level1/Door")
-
-[node name="DoorSprite" type="Sprite2D" parent="Level/Door"]
-position = Vector2(211.333, -363.333)
-texture = ExtResource("3_t8nhm")
-
-[node name="InteractableArea" type="Area2D" parent="Level/Door"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Door/InteractableArea"]
-position = Vector2(210, -363.333)
-shape = SubResource("RectangleShape2D_s8xkc")
-
-[node name="TestKey" parent="Level" instance=ExtResource("4_62871")]
-position = Vector2(87, 134)
-scale = Vector2(0.5, 0.5)
-ObjectName = ""
-
-[node name="Level1" parent="." instance=ExtResource("2_v4244")]
-visible = false
-position = Vector2(-4680, -1673)
-
-[node name="Door" parent="Level1" node_paths=PackedStringArray("ConnectedDoor") instance=ExtResource("2_tvrfw")]
-position = Vector2(-325, 88)
-ConnectedDoor = NodePath("../../Level/Door")
+script = ExtResource("1_62871")
 
 [node name="QusetManager" parent="." node_paths=PackedStringArray("FirstQuest") instance=ExtResource("14_4dpe1")]
 FirstQuest = NodePath("Quest")
 
 [node name="Quest" parent="QusetManager" node_paths=PackedStringArray("FirstLevel") instance=ExtResource("15_4dpe1")]
-FirstLevel = NodePath("")
+FirstLevel = NodePath("../../Level")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
-[node name="Level3" type="Node2D" parent="."]
-position = Vector2(12667, 0)
-script = ExtResource("5_qvet6")
+[node name="Level" parent="." instance=ExtResource("3_tvrfw")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Level3"]
-texture = ExtResource("20_j4bkq")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Level3/Sprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level3/Sprite2D/StaticBody2D"]
-shape = SubResource("SegmentShape2D_03uyo")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level3/Sprite2D/StaticBody2D"]
-position = Vector2(4115, -705)
-shape = SubResource("SegmentShape2D_5x14y")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Level3/Sprite2D/StaticBody2D"]
-position = Vector2(-4230, -740)
-shape = SubResource("SegmentShape2D_kln88")
-
-[node name="Door" type="Node2D" parent="Level3" node_paths=PackedStringArray("SpawnPoint", "ConnectedDoor")]
-position = Vector2(-4196.15, -382.192)
-script = ExtResource("21_c73vr")
-SpawnPoint = NodePath("SpawnPoint")
-ConnectedDoor = NodePath("")
-
-[node name="DoorSprite" type="Sprite2D" parent="Level3/Door"]
-
-[node name="InteractableArea" type="Area2D" parent="Level3/Door"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level3/Door/InteractableArea"]
-position = Vector2(100.574, 267.096)
-shape = SubResource("RectangleShape2D_kln88")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level3/Door/InteractableArea"]
-position = Vector2(47.835, 705.192)
-shape = SubResource("RectangleShape2D_7d4br")
-
-[node name="SpawnPoint" type="Node2D" parent="Level3/Door"]
-position = Vector2(369.15, 212.192)
+[node name="Level2" parent="." instance=ExtResource("4_62871")]
+position = Vector2(10225, 0)

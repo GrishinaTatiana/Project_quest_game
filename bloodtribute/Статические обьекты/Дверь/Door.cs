@@ -26,9 +26,9 @@ public partial class Door : Node2D, IInteractable
 
     public async Task Interact(Character character)
     {
-        character.GetParent().RemoveChild(character);
-        ConnectedDoor.GetParent().AddChild(character);
-        character.GlobalPosition = ConnectedDoor.SpawnPoint.GlobalPosition;
+        var h = GetParent<Level>().Exit();
+        ConnectedDoor.GetParent<Level>().Enter(h);
+        h.GlobalPosition = ConnectedDoor.SpawnPoint.GlobalPosition;
         InteractionFinished?.Invoke(this);
         await Task.Delay(1000);
     }

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="BloodTribute"
-run/main_scene="uid://bfr5ljbgkj2w1"
+run/main_scene="uid://crwq1fto4cyap"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -50,3 +50,7 @@ InteractKey={
 [layer_names]
 
 2d_render/layer_2="Interactable"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

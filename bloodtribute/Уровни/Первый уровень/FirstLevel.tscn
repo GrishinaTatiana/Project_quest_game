@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://bfr5ljbgkj2w1"]
+[gd_scene load_steps=22 format=3 uid="uid://bfr5ljbgkj2w1"]
 
 [ext_resource type="PackedScene" uid="uid://bnjeminrdn7x4" path="res://Уровень/Level.tscn" id="1_1px8p"]
 [ext_resource type="Script" uid="uid://cpq246g6j65ik" path="res://Уровни/Первый уровень/FirstLevel.cs" id="2_ahcnj"]
 [ext_resource type="Texture2D" uid="uid://cplammpr0hf2h" path="res://Уровни/Первый уровень/Background.png" id="2_jj4uh"]
 [ext_resource type="PackedScene" uid="uid://td8epsdh2fjd" path="res://Уровни/Первый уровень/Boots.tscn" id="3_at6na"]
 [ext_resource type="PackedScene" uid="uid://b71q0ca8st8dx" path="res://Герой/Hero.tscn" id="7_03hxq"]
+[ext_resource type="AudioStream" uid="uid://udhrqctg0wk7" path="res://Звуки/дверь/Drs_Wood_StableDoor_Close_01.wav" id="7_bmtth"]
 [ext_resource type="Script" uid="uid://bs5njj48a8hxc" path="res://Тест/FirstDoor.cs" id="8_ahcnj"]
 [ext_resource type="PackedScene" uid="uid://dnvk06ftmx8jf" path="res://Статические обьекты/Сейф/Safe.tscn" id="8_ytx64"]
 [ext_resource type="PackedScene" uid="uid://cdqy2xvl03bvo" path="res://Статические обьекты/Доска/Board.tscn" id="10_4byaa"]
@@ -71,13 +72,15 @@ FailedInteraction = ""
 [node name="Hero" parent="." index="2" instance=ExtResource("7_03hxq")]
 position = Vector2(-939, -4)
 scale = Vector2(1, 1)
-Speed = 0.0
-Gravity = 0.0
+Speed = 1000.0
+Gravity = 10000.0
 
-[node name="Door" type="Node2D" parent="." index="3"]
+[node name="Door" type="Node2D" parent="." index="3" node_paths=PackedStringArray("SpawnPoint", "audio")]
 position = Vector2(-2715, -358)
 script = ExtResource("8_ahcnj")
 cantleavetext = "Я ещё не завершила все дела домаф"
+SpawnPoint = NodePath("Node2D")
+audio = NodePath("AudioStreamPlayer")
 
 [node name="DoorSprite" type="Sprite2D" parent="Door" index="0"]
 
@@ -93,16 +96,25 @@ shape = SubResource("RectangleShape2D_ahcnj")
 position = Vector2(7.375, 719.75)
 shape = SubResource("RectangleShape2D_4byaa")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Door" index="2"]
+stream = ExtResource("7_bmtth")
+
+[node name="Node2D" type="Node2D" parent="Door" index="3"]
+position = Vector2(328, 78)
+
 [node name="Safe" parent="." index="4" instance=ExtResource("8_ytx64")]
 position = Vector2(500, 41)
 
 [node name="Board" parent="." index="5" instance=ExtResource("10_4byaa")]
 position = Vector2(300, -520)
 
-[node name="Microwave" type="Node2D" parent="." index="6"]
+[node name="Microwave" type="Node2D" parent="." index="6" node_paths=PackedStringArray("InteractableArea", "Sprite", "audio")]
 position = Vector2(2715, -15)
 script = ExtResource("11_csf12")
 miniScreenPath = "res://Статические обьекты/Микроволновка/MicrowaveMini.tscn"
+InteractableArea = NodePath("InteractableArea")
+Sprite = NodePath("Sprite")
+audio = NodePath("AudioStreamPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="Microwave" index="0"]
 
@@ -116,10 +128,13 @@ shape = SubResource("RectangleShape2D_rmho5")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Microwave" index="2"]
 
-[node name="Fridge" type="Node2D" parent="." index="7"]
+[node name="Fridge" type="Node2D" parent="." index="7" node_paths=PackedStringArray("InteractableArea", "Sprite", "audio")]
 position = Vector2(1065, -430)
 script = ExtResource("11_csf12")
 miniScreenPath = "res://Статические обьекты/Холодос/FridgeMini.tscn"
+InteractableArea = NodePath("InteractableArea")
+Sprite = NodePath("Sprite")
+audio = NodePath("AudioStreamPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="Fridge" index="0"]
 
@@ -133,10 +148,13 @@ shape = SubResource("RectangleShape2D_csf12")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Fridge" index="2"]
 
-[node name="DeskDrawer" type="Node2D" parent="." index="8"]
+[node name="DeskDrawer" type="Node2D" parent="." index="8" node_paths=PackedStringArray("InteractableArea", "Sprite", "audio")]
 position = Vector2(661, 28)
 script = ExtResource("11_csf12")
 miniScreenPath = "res://Статические обьекты/Ящик стола/DeskDrawerMini.tscn"
+InteractableArea = NodePath("InteractableArea")
+Sprite = NodePath("Sprite")
+audio = NodePath("AudioStreamPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="DeskDrawer" index="0"]
 
@@ -162,7 +180,7 @@ ObjectName = ""
 InteractionText = ""
 FailedInteraction = ""
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
+[node name="Audio" type="AudioStreamPlayer" parent="." index="11"]
 stream = ExtResource("12_rmho5")
 volume_db = -20.0
 autoplay = true

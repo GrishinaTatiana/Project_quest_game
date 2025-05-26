@@ -1,8 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://b71q0ca8st8dx"]
+[gd_scene load_steps=36 format=3 uid="uid://b71q0ca8st8dx"]
 
 [ext_resource type="PackedScene" uid="uid://bo1np632yj0u1" path="res://Character/Character.tscn" id="1_ts3u1"]
 [ext_resource type="Script" uid="uid://exocfbvov5ty" path="res://Герой/Hero.cs" id="2_3mnb8"]
-[ext_resource type="Texture2D" uid="uid://bf83v6p1rfika" path="res://Герой/ATTACK 1.png" id="4_x3v3e"]
+[ext_resource type="Texture2D" uid="uid://c3bpt2c008lrm" path="res://шаги2.png" id="4_bfwai"]
 [ext_resource type="Texture2D" uid="uid://otxsrknyg67j" path="res://Герой/шаги2.png" id="5_7lfho"]
 [ext_resource type="PackedScene" uid="uid://bisou88n41uk8" path="res://Герой/UI/InventoryUI.tscn" id="6_7lfho"]
 [ext_resource type="Texture2D" uid="uid://dghe0pbuslnj6" path="res://Тест/LightSprite.png" id="7_fphux"]
@@ -18,33 +18,9 @@
 atlas = ExtResource("5_7lfho")
 region = Rect2(0, 0, 350, 820)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7lfho"]
-atlas = ExtResource("4_x3v3e")
-region = Rect2(0, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fphux"]
-atlas = ExtResource("4_x3v3e")
-region = Rect2(96, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_io2uf"]
-atlas = ExtResource("4_x3v3e")
-region = Rect2(192, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cpcjm"]
-atlas = ExtResource("4_x3v3e")
-region = Rect2(288, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sudd6"]
-atlas = ExtResource("4_x3v3e")
-region = Rect2(384, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_heiff"]
-atlas = ExtResource("4_x3v3e")
-region = Rect2(480, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bfwai"]
-atlas = ExtResource("4_x3v3e")
-region = Rect2(576, 0, 96, 96)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqg14"]
+atlas = ExtResource("4_bfwai")
+region = Rect2(0, 0, 350, 820)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2x6lp"]
 atlas = ExtResource("5_7lfho")
@@ -122,25 +98,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7lfho")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fphux")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_io2uf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cpcjm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sudd6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_heiff")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bfwai")
+"texture": SubResource("AtlasTexture_tqg14")
 }],
 "loop": true,
 "name": &"Interact",
@@ -220,13 +178,13 @@ stream_6/stream = ExtResource("13_bfwai")
 scale = Vector2(10, 10)
 script = ExtResource("2_3mnb8")
 InventoryUi = NodePath("CanvasLayer/InventoryUI")
+limitBottom = 540
 Speed = 120.0
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_sqaug")
-animation = &"Run"
+animation = &"Interact"
 autoplay = "Idle"
-frame_progress = 0.00332261
 
 [node name="ReachArea" parent="." index="1"]
 visible = false
@@ -250,11 +208,10 @@ shape = SubResource("RectangleShape2D_x3v3e")
 Hero = NodePath("../..")
 
 [node name="PointLight2D" type="PointLight2D" parent="." index="5"]
-visible = false
-scale = Vector2(0.5, 0.5)
 shadow_enabled = true
 shadow_item_cull_mask = 1023
 texture = ExtResource("7_fphux")
+texture_scale = 3.5
 
 [node name="Sounds" type="Node" parent="." index="6"]
 

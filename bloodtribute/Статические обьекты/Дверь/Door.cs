@@ -19,15 +19,18 @@ public partial class Door : Node2D, IInteractable
     [Export]
     public Door ConnectedDoor;
 
+    [Export]
+    public AudioStreamPlayer audio { get; set; }
+
     public event Action<IInteractable> InteractionFinished;
 
     public async Task Interact(Character character)
     {
-        character.GetParent().RemoveChild(character);
-        ConnectedDoor.GetParent().AddChild(character);
-        character.GlobalPosition = ConnectedDoor.SpawnPoint.GlobalPosition;
+        var h = GetParent<Level>().Exit();
+        ConnectedDoor.GetParent<Level>().Enter(h);
+        h.GlobalPosition = ConnectedDoor.SpawnPoint.GlobalPosition;
         InteractionFinished?.Invoke(this);
-        await Task.Delay(1000);
+        //await Task.Delay(1000);
     }
 
     public override void _Ready()

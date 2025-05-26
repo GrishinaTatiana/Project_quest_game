@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b3g1aad8su73t"
+path="res://.godot/imported/gun-fall-3.mp3-7fff34394ec1c608f0e8964d8889e6f2.mp3str"
+
+[deps]
+
+source_file="res://Звуки/поднятие пистолета/gun-fall-3.mp3"
+dest_files=["res://.godot/imported/gun-fall-3.mp3-7fff34394ec1c608f0e8964d8889e6f2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

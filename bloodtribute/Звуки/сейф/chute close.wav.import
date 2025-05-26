@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://oa5vpb36ky5a"
+path="res://.godot/imported/chute close.wav-0b56b5968e9822b0ed65d71966219e52.sample"
+
+[deps]
+
+source_file="res://Звуки/сейф/chute close.wav"
+dest_files=["res://.godot/imported/chute close.wav-0b56b5968e9822b0ed65d71966219e52.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cufb83iif0nri"
+path="res://.godot/imported/Free Game Soundtrack by chiphead64 - (hurry up).wav-839f82b7c0193d96909ecd63cae014b7.sample"
+
+[deps]
+
+source_file="res://Звуки/саундтреки/Free Game Soundtrack by chiphead64 - (hurry up).wav"
+dest_files=["res://.godot/imported/Free Game Soundtrack by chiphead64 - (hurry up).wav-839f82b7c0193d96909ecd63cae014b7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

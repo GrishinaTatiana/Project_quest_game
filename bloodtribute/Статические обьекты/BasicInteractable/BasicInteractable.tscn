@@ -2,14 +2,17 @@
 
 [ext_resource type="Script" uid="uid://2qlpnv7e65io" path="res://Статические обьекты/BasicInteractable/BasicInteractable.cs" id="1_q3m5r"]
 
-[node name="BasicInteractable" type="Node2D" node_paths=PackedStringArray("InteractableArea", "Sprite")]
+[node name="BasicInteractable" type="Node2D" node_paths=PackedStringArray("InteractableArea", "Sprite", "audio")]
 script = ExtResource("1_q3m5r")
 InteractableArea = NodePath("InteractableArea")
 ObjectName = "BasicInteractable"
 Sprite = NodePath("Sprite")
+audio = NodePath("AudioStreamPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 
 [node name="InteractableArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

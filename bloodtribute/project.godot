@@ -50,3 +50,7 @@ InteractKey={
 [layer_names]
 
 2d_render/layer_2="Interactable"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cp3ij2eluwy44"]
+[gd_scene load_steps=12 format=3 uid="uid://cp3ij2eluwy44"]
 
 [ext_resource type="PackedScene" uid="uid://bnjeminrdn7x4" path="res://Уровень/Level.tscn" id="1_y8ptf"]
 [ext_resource type="Texture2D" uid="uid://q06lo8hf7b6k" path="res://Уровни/Второй уровень/уууууу.png" id="2_03uyo"]
+[ext_resource type="Script" uid="uid://bxl7d33be8e8m" path="res://Уровни/Второй уровень/SecondLevel.cs" id="2_r33ki"]
 [ext_resource type="Script" uid="uid://g1vnboa2w1fl" path="res://Уровни/Второй уровень/SecondDoor.cs" id="3_5x14y"]
+[ext_resource type="AudioStream" uid="uid://udhrqctg0wk7" path="res://Звуки/дверь/Drs_Wood_StableDoor_Close_01.wav" id="4_7d4br"]
+[ext_resource type="AudioStream" uid="uid://dgk60prinamsc" path="res://Звуки/полицеский участок/Sound_03184.mp3" id="4_kln88"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_03uyo"]
 a = Vector2(-4559, 426)
@@ -21,6 +24,7 @@ size = Vector2(369.147, 816.192)
 size = Vector2(262.625, 66.5)
 
 [node name="Level" instance=ExtResource("1_y8ptf")]
+script = ExtResource("2_r33ki")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_03uyo")
@@ -38,9 +42,11 @@ shape = SubResource("SegmentShape2D_5x14y")
 position = Vector2(-4104, -743)
 shape = SubResource("SegmentShape2D_kln88")
 
-[node name="Door" type="Node2D" parent="." index="1"]
+[node name="Door" type="Node2D" parent="." index="1" node_paths=PackedStringArray("SpawnPoint", "audio")]
 position = Vector2(-4196.15, -382.192)
 script = ExtResource("3_5x14y")
+SpawnPoint = NodePath("Node2D")
+audio = NodePath("AudioStreamPlayer")
 
 [node name="DoorSprite" type="Sprite2D" parent="Door" index="0"]
 
@@ -55,3 +61,15 @@ shape = SubResource("RectangleShape2D_kln88")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Door/InteractableArea" index="1"]
 position = Vector2(47.835, 705.192)
 shape = SubResource("RectangleShape2D_7d4br")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Door" index="2"]
+stream = ExtResource("4_7d4br")
+
+[node name="Node2D" type="Node2D" parent="Door" index="3"]
+position = Vector2(383.15, 25.192)
+
+[node name="Audio" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource("4_kln88")
+volume_db = -30.0
+autoplay = true
+bus = &"Music"

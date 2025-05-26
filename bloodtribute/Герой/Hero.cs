@@ -10,9 +10,13 @@ public partial class Hero : Character
     [Export]
     InventoryUi InventoryUi { get; set; }
 
+    [Export]
+    public int limitBottom;
+
+
     public static Hero Instance;
 
-    Camera2D Camera;
+    public Camera2D Camera;
 
     public event Action FinishedInteracting;
 
@@ -51,7 +55,10 @@ public partial class Hero : Character
     public async void Interact(IInteractable interactable)
     {
         if (interactable.CanInteract())
+        {
+            interactable.audio.Play();
             await interactable.Interact(this);
+        }
         FinishedInteracting?.Invoke();
     }
 
@@ -61,6 +68,9 @@ public partial class Hero : Character
         InventoryChanged += InventoryUi.UpdateInventory;
         Puppeteer = new PlayerPuppeteer(this);
         Camera = GetNode<Camera2D>("Camera");
+
+        Camera.LimitBottom = limitBottom;
+
         //Camera.LimitBottom = GetParent<Level>().BottomEdge;
         base._Ready();
     }

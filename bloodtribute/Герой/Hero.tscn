@@ -1,43 +1,26 @@
-[gd_scene load_steps=34 format=3 uid="uid://b71q0ca8st8dx"]
+[gd_scene load_steps=36 format=3 uid="uid://b71q0ca8st8dx"]
 
 [ext_resource type="PackedScene" uid="uid://bo1np632yj0u1" path="res://Character/Character.tscn" id="1_ts3u1"]
 [ext_resource type="Script" uid="uid://exocfbvov5ty" path="res://Герой/Hero.cs" id="2_3mnb8"]
-[ext_resource type="Texture2D" uid="uid://bf83v6p1rfika" path="res://Герой/ATTACK 1.png" id="4_x3v3e"]
+[ext_resource type="Texture2D" uid="uid://c3bpt2c008lrm" path="res://шаги2.png" id="4_bfwai"]
 [ext_resource type="Texture2D" uid="uid://otxsrknyg67j" path="res://Герой/шаги2.png" id="5_7lfho"]
 [ext_resource type="PackedScene" uid="uid://bisou88n41uk8" path="res://Герой/UI/InventoryUI.tscn" id="6_7lfho"]
 [ext_resource type="Texture2D" uid="uid://dghe0pbuslnj6" path="res://Тест/LightSprite.png" id="7_fphux"]
+[ext_resource type="AudioStream" uid="uid://c0relf3sqlnaw" path="res://Герой/шаги/Floor_step1.wav" id="7_heiff"]
+[ext_resource type="AudioStream" uid="uid://dyju2ai4ygryl" path="res://Герой/шаги/Floor_step2.wav" id="8_bfwai"]
+[ext_resource type="AudioStream" uid="uid://x31fy7l1g2ex" path="res://Герой/шаги/Floor_step3.wav" id="9_2x6lp"]
+[ext_resource type="AudioStream" uid="uid://6l0ke7onxl26" path="res://Герой/шаги/Floor_step4.wav" id="10_q5rqm"]
+[ext_resource type="AudioStream" uid="uid://bapeklowd14nh" path="res://Герой/шаги/Floor_step5.wav" id="11_5hlad"]
+[ext_resource type="AudioStream" uid="uid://b84n4lqttpjq" path="res://Герой/шаги/Floor_step0.wav" id="12_b86ej"]
+[ext_resource type="AudioStream" uid="uid://cd6cy3wq0jo64" path="res://Герой/шаги/Floor_step6.wav" id="13_bfwai"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x3v3e"]
 atlas = ExtResource("5_7lfho")
 region = Rect2(0, 0, 350, 820)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7lfho"]
-atlas = ExtResource("4_x3v3e")
-region = Rect2(0, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fphux"]
-atlas = ExtResource("4_x3v3e")
-region = Rect2(96, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_io2uf"]
-atlas = ExtResource("4_x3v3e")
-region = Rect2(192, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cpcjm"]
-atlas = ExtResource("4_x3v3e")
-region = Rect2(288, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sudd6"]
-atlas = ExtResource("4_x3v3e")
-region = Rect2(384, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_heiff"]
-atlas = ExtResource("4_x3v3e")
-region = Rect2(480, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bfwai"]
-atlas = ExtResource("4_x3v3e")
-region = Rect2(576, 0, 96, 96)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqg14"]
+atlas = ExtResource("4_bfwai")
+region = Rect2(0, 0, 350, 820)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2x6lp"]
 atlas = ExtResource("5_7lfho")
@@ -115,25 +98,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7lfho")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fphux")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_io2uf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cpcjm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sudd6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_heiff")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bfwai")
+"texture": SubResource("AtlasTexture_tqg14")
 }],
 "loop": true,
 "name": &"Interact",
@@ -199,32 +164,42 @@ size = Vector2(336.8, 866.4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3v3e"]
 size = Vector2(230.2, 816)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_js7wl"]
+streams_count = 7
+stream_0/stream = ExtResource("7_heiff")
+stream_1/stream = ExtResource("8_bfwai")
+stream_2/stream = ExtResource("9_2x6lp")
+stream_3/stream = ExtResource("10_q5rqm")
+stream_4/stream = ExtResource("11_5hlad")
+stream_5/stream = ExtResource("12_b86ej")
+stream_6/stream = ExtResource("13_bfwai")
+
 [node name="Hero" node_paths=PackedStringArray("InventoryUi") instance=ExtResource("1_ts3u1")]
 scale = Vector2(10, 10)
 script = ExtResource("2_3mnb8")
 InventoryUi = NodePath("CanvasLayer/InventoryUI")
+limitBottom = 540
 Speed = 120.0
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_sqaug")
-animation = &"Run"
+animation = &"Interact"
 autoplay = "Idle"
-frame_progress = 0.798725
 
 [node name="ReachArea" parent="." index="1"]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReachArea" index="0"]
 position = Vector2(-10.6, 2)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1uo57")
 debug_color = Color(0.969302, 0, 0.462251, 0.42)
 
 [node name="Camera" type="Camera2D" parent="." index="2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
-scale = Vector2(1, 1)
+visible = false
 shape = SubResource("RectangleShape2D_x3v3e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
@@ -233,8 +208,14 @@ shape = SubResource("RectangleShape2D_x3v3e")
 Hero = NodePath("../..")
 
 [node name="PointLight2D" type="PointLight2D" parent="." index="5"]
-visible = false
-scale = Vector2(0.5, 0.5)
+color = Color(0.501407, 0.501406, 0.501406, 1)
 shadow_enabled = true
 shadow_item_cull_mask = 1023
 texture = ExtResource("7_fphux")
+texture_scale = 3.0
+
+[node name="Sounds" type="Node" parent="." index="6"]
+
+[node name="Run" type="AudioStreamPlayer" parent="Sounds" index="0"]
+stream = SubResource("AudioStreamRandomizer_js7wl")
+volume_db = -5.0

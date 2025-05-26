@@ -19,6 +19,9 @@ public partial class Item : Node2D, IInteractable
     public Texture2D Icon { get { if (_Icon == null) return Sprite.Texture; else return _Icon; } }
 
     [Export]
+    public AudioStreamPlayer audio { get; set; }
+
+    [Export]
     public Texture2D _Icon;
 
     public event Action<IInteractable> InteractionFinished;

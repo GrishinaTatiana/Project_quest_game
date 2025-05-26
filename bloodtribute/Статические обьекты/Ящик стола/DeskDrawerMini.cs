@@ -5,6 +5,8 @@ public partial class DeskDrawerMini : MiniScreen
 {
     Sprite2D openedDrawer;
     [Export] Item FishFood;
+    [Export] AudioStreamPlayer AudioOpen;
+    [Export] AudioStreamPlayer AudioTake;
 
     public override void _Ready()
     {
@@ -20,6 +22,7 @@ public partial class DeskDrawerMini : MiniScreen
     {
         Background.Hide();
         openedDrawer.Show();
+        AudioOpen.Play();
         Background.GetChild<Button>(0).Pressed -= openDrawer;
     }
 
@@ -27,6 +30,7 @@ public partial class DeskDrawerMini : MiniScreen
     {
         openedDrawer.GetChild<Button>(0).Pressed -= retriveFood;
         openedDrawer.Hide();
+        AudioTake.Play();
         Hero.Instance.InsertItem(FishFood);
         FishFood = null;
         Background.Show();

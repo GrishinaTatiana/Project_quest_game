@@ -16,5 +16,7 @@ public interface IInteractable
     public bool CanInteract();
 
     public string FailedInteraction {  get; }
+
+    public AudioStreamPlayer audio { get; }
 }
 

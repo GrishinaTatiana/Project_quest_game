@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ho0w2c77txux"
+path="res://.godot/imported/chute open.wav-264a9bb1a5cdc8e61a62312df76100e8.sample"
+
+[deps]
+
+source_file="res://Звуки/сейф/chute open.wav"
+dest_files=["res://.godot/imported/chute open.wav-264a9bb1a5cdc8e61a62312df76100e8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

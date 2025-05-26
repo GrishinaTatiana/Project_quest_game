@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://qkmq3lfuhlv1"]
+[gd_scene load_steps=8 format=3 uid="uid://qkmq3lfuhlv1"]
 
 [ext_resource type="PackedScene" uid="uid://cevqu155kry03" path="res://МиниЭкраны/MiniScreen.tscn" id="1_d7wm0"]
 [ext_resource type="Script" uid="uid://vl8ljen21yyc" path="res://Статические обьекты/Ящик стола/DeskDrawerMini.cs" id="2_iwdpm"]
 [ext_resource type="Texture2D" uid="uid://bfgwinflh3j62" path="res://Статические обьекты/Ящик стола/СТОЛ.png" id="2_mupfi"]
 [ext_resource type="Texture2D" uid="uid://du545qq2pvq0s" path="res://Статические обьекты/Ящик стола/СТОЛКОРМ.png" id="3_7flqa"]
 [ext_resource type="PackedScene" uid="uid://djmm568g8wv0w" path="res://Предметы/FishFood.tscn" id="5_8q8px"]
+[ext_resource type="AudioStream" uid="uid://c757b8btpds73" path="res://Звуки/ящик/Drs_Open_Drawer_01.wav" id="6_n0xt0"]
+[ext_resource type="AudioStream" uid="uid://dwscosys750b5" path="res://Звуки/Корм для рыбок/banana throw 1.wav" id="7_p1pmy"]
 
-[node name="CanvasLayer" node_paths=PackedStringArray("FishFood") instance=ExtResource("1_d7wm0")]
+[node name="CanvasLayer" node_paths=PackedStringArray("FishFood", "AudioOpen", "AudioTake") instance=ExtResource("1_d7wm0")]
 script = ExtResource("2_iwdpm")
 FishFood = NodePath("FishFood")
+AudioOpen = NodePath("AudioOpen")
+AudioTake = NodePath("AudioTake")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_mupfi")
@@ -34,3 +38,11 @@ flat = true
 
 [node name="FishFood" parent="." index="3" instance=ExtResource("5_8q8px")]
 visible = false
+
+[node name="AudioOpen" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("6_n0xt0")
+bus = &"Sounds"
+
+[node name="AudioTake" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("7_p1pmy")
+bus = &"Sounds"

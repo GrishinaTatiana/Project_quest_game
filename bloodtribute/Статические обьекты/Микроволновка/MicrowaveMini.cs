@@ -7,7 +7,8 @@ public partial class MicrowaveMini : MiniScreen
     Sprite2D openedDoor;
     Sprite2D openedDoorWFood;
     Sprite2D closedDoorWFood;
-
+    [Export] AudioStreamPlayer AudioOpen;
+    [Export] AudioStreamPlayer AudioCooking;
 
     public override void _Ready()
     {
@@ -27,6 +28,7 @@ public partial class MicrowaveMini : MiniScreen
     {
         Background.Hide();
         openedDoor.Show();
+        AudioOpen.Play();
         Background.GetChild<Button>(0).Pressed -= openDoor;
     }
 
@@ -47,6 +49,7 @@ public partial class MicrowaveMini : MiniScreen
     {
         openedDoorWFood.GetChild<Button>(0).Pressed -= retriveMeal;
         openedDoorWFood.Hide();
+        AudioCooking.Play();
         openedDoor.Show();
         finishGame();
     }

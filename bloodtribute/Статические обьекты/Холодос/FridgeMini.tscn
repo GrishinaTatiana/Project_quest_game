@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck77g7prn8tlx"]
+[gd_scene load_steps=8 format=3 uid="uid://ck77g7prn8tlx"]
 
 [ext_resource type="PackedScene" uid="uid://cevqu155kry03" path="res://МиниЭкраны/MiniScreen.tscn" id="1_1qar6"]
 [ext_resource type="Texture2D" uid="uid://byajsf6wel72l" path="res://Статические обьекты/Холодос/холодос.png" id="2_aij0w"]
 [ext_resource type="Script" uid="uid://ckldfix4ysu73" path="res://Статические обьекты/Холодос/FridgeMini.cs" id="2_i1lf7"]
 [ext_resource type="Texture2D" uid="uid://bqfmoix54x4r5" path="res://Статические обьекты/Холодос/холодосопенг.png" id="3_6btgp"]
 [ext_resource type="PackedScene" uid="uid://btqmm4dt3s3uh" path="res://Предметы/Breakfast.tscn" id="5_88xad"]
+[ext_resource type="AudioStream" uid="uid://drnswnw6gkkki" path="res://Звуки/холодильник/fridge-door-open-3.mp3" id="6_qwods"]
+[ext_resource type="AudioStream" uid="uid://4ao26f27svwq" path="res://Звуки/тарелка/glass placed on shelf 8.wav" id="7_alk27"]
 
-[node name="CanvasLayer" node_paths=PackedStringArray("Breakfast") instance=ExtResource("1_1qar6")]
+[node name="CanvasLayer" node_paths=PackedStringArray("Breakfast", "AudioOpen", "AudioTake") instance=ExtResource("1_1qar6")]
 script = ExtResource("2_i1lf7")
 Breakfast = NodePath("Item")
+AudioOpen = NodePath("AudioOpen")
+AudioTake = NodePath("AudioTake")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_aij0w")
@@ -34,3 +38,11 @@ flat = true
 
 [node name="Item" parent="." index="3" instance=ExtResource("5_88xad")]
 visible = false
+
+[node name="AudioOpen" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("6_qwods")
+bus = &"Sounds"
+
+[node name="AudioTake" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("7_alk27")
+bus = &"Sounds"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bfr5ljbgkj2w1"]
+[gd_scene load_steps=21 format=3 uid="uid://bfr5ljbgkj2w1"]
 
 [ext_resource type="PackedScene" uid="uid://bnjeminrdn7x4" path="res://Уровень/Level.tscn" id="1_1px8p"]
 [ext_resource type="Script" uid="uid://cpq246g6j65ik" path="res://Уровни/Первый уровень/FirstLevel.cs" id="2_ahcnj"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bqd857rdjgv01" path="res://Уровни/Первый уровень/Counter.png" id="10_csf12"]
 [ext_resource type="Script" uid="uid://dqy6vkme52x" path="res://Статические обьекты/BasicInteractable/MinigameInteractable.cs" id="11_csf12"]
 [ext_resource type="PackedScene" uid="uid://b0esw5ojpprfe" path="res://Уровни/Первый уровень/Fishes.tscn" id="11_rmho5"]
+[ext_resource type="AudioStream" uid="uid://c68eg305vvafc" path="res://Звуки/саундтреки/Calm_Day_OdayakanaHibi_emotion_03_72_BPM_full.mp3" id="12_rmho5"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_03hxq"]
 a = Vector2(-2972, 426)
@@ -63,12 +64,15 @@ shape = SubResource("SegmentShape2D_ahcnj")
 [node name="Boots" parent="." index="1" instance=ExtResource("3_at6na")]
 z_index = 1
 position = Vector2(-2231, 429)
+ObjectName = ""
+InteractionText = ""
+FailedInteraction = ""
 
 [node name="Hero" parent="." index="2" instance=ExtResource("7_03hxq")]
-position = Vector2(-433, 10)
+position = Vector2(-939, -4)
 scale = Vector2(1, 1)
-Speed = 1000.0
-Gravity = 1000.0
+Speed = 0.0
+Gravity = 0.0
 
 [node name="Door" type="Node2D" parent="." index="3"]
 position = Vector2(-2715, -358)
@@ -95,13 +99,10 @@ position = Vector2(500, 41)
 [node name="Board" parent="." index="5" instance=ExtResource("10_4byaa")]
 position = Vector2(300, -520)
 
-[node name="Microwave" type="Node2D" parent="." index="6" node_paths=PackedStringArray("InteractableArea", "Sprite", "audio")]
+[node name="Microwave" type="Node2D" parent="." index="6"]
 position = Vector2(2715, -15)
 script = ExtResource("11_csf12")
 miniScreenPath = "res://Статические обьекты/Микроволновка/MicrowaveMini.tscn"
-InteractableArea = NodePath("InteractableArea")
-Sprite = NodePath("Sprite")
-audio = NodePath("AudioStreamPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="Microwave" index="0"]
 
@@ -115,13 +116,10 @@ shape = SubResource("RectangleShape2D_rmho5")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Microwave" index="2"]
 
-[node name="Fridge" type="Node2D" parent="." index="7" node_paths=PackedStringArray("InteractableArea", "Sprite", "audio")]
+[node name="Fridge" type="Node2D" parent="." index="7"]
 position = Vector2(1065, -430)
 script = ExtResource("11_csf12")
 miniScreenPath = "res://Статические обьекты/Холодос/FridgeMini.tscn"
-InteractableArea = NodePath("InteractableArea")
-Sprite = NodePath("Sprite")
-audio = NodePath("AudioStreamPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="Fridge" index="0"]
 
@@ -135,13 +133,10 @@ shape = SubResource("RectangleShape2D_csf12")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Fridge" index="2"]
 
-[node name="DeskDrawer" type="Node2D" parent="." index="8" node_paths=PackedStringArray("InteractableArea", "Sprite", "audio")]
+[node name="DeskDrawer" type="Node2D" parent="." index="8"]
 position = Vector2(661, 28)
 script = ExtResource("11_csf12")
 miniScreenPath = "res://Статические обьекты/Ящик стола/DeskDrawerMini.tscn"
-InteractableArea = NodePath("InteractableArea")
-Sprite = NodePath("Sprite")
-audio = NodePath("AudioStreamPlayer")
 
 [node name="Sprite" type="Sprite2D" parent="DeskDrawer" index="0"]
 
@@ -163,3 +158,12 @@ texture = ExtResource("10_csf12")
 [node name="BasicInteractable" parent="." index="10" instance=ExtResource("11_rmho5")]
 z_index = 5
 position = Vector2(60, 451)
+ObjectName = ""
+InteractionText = ""
+FailedInteraction = ""
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="11"]
+stream = ExtResource("12_rmho5")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"

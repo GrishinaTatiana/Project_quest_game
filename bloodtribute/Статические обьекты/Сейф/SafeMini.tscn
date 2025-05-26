@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7icwxfoqm8go"]
+[gd_scene load_steps=11 format=3 uid="uid://c7icwxfoqm8go"]
 
 [ext_resource type="PackedScene" uid="uid://cevqu155kry03" path="res://МиниЭкраны/MiniScreen.tscn" id="1_4trus"]
 [ext_resource type="Script" uid="uid://b65jnvshseg01" path="res://Статические обьекты/Сейф/SafeMini.cs" id="2_ikeq3"]
@@ -7,12 +7,18 @@
 [ext_resource type="Texture2D" uid="uid://jc0c7x600ofq" path="res://Статические обьекты/Сейф/22.png" id="5_2ibeq"]
 [ext_resource type="PackedScene" uid="uid://cumnhhs038efq" path="res://Предметы/Gun.tscn" id="6_3u4k3"]
 [ext_resource type="PackedScene" uid="uid://cygw0csjyu060" path="res://Предметы/ID.tscn" id="7_uj3pv"]
+[ext_resource type="AudioStream" uid="uid://ho0w2c77txux" path="res://Звуки/сейф/chute open.wav" id="8_c23vh"]
+[ext_resource type="AudioStream" uid="uid://b3g1aad8su73t" path="res://Звуки/поднятие пистолета/gun-fall-3.mp3" id="9_6jnj7"]
+[ext_resource type="AudioStream" uid="uid://dkw6fvv5ftv2x" path="res://Звуки/сейф/zvuk-najatiya-knopki.mp3" id="10_ncfgt"]
 
-[node name="CanvasLayer" node_paths=PackedStringArray("Gun", "ID") instance=ExtResource("1_4trus")]
+[node name="CanvasLayer" node_paths=PackedStringArray("Gun", "ID", "AudioOpen", "AudioTake", "AudioButton") instance=ExtResource("1_4trus")]
 script = ExtResource("2_ikeq3")
 Password = "1201"
 Gun = NodePath("Gun")
 ID = NodePath("ID")
+AudioOpen = NodePath("AudioOpen")
+AudioTake = NodePath("AudioTake")
+AudioButton = NodePath("AudioButton")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_us71v")
@@ -126,3 +132,15 @@ visible = false
 
 [node name="ID" parent="." index="5" instance=ExtResource("7_uj3pv")]
 visible = false
+
+[node name="AudioOpen" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("8_c23vh")
+bus = &"Sounds"
+
+[node name="AudioTake" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource("9_6jnj7")
+bus = &"Sounds"
+
+[node name="AudioButton" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource("10_ncfgt")
+bus = &"Sounds"

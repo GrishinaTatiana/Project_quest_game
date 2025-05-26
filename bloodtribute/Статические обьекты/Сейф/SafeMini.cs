@@ -9,7 +9,7 @@ public partial class SafeMini : MiniScreen
     [Export] Item Gun;
     [Export] Item ID;
     [Export] AudioStreamPlayer AudioOpen;
-    [Export] AudioStreamPlayer AudioClose;
+    [Export] AudioStreamPlayer AudioTake;
     [Export] AudioStreamPlayer AudioButton;
 
 
@@ -67,7 +67,7 @@ public partial class SafeMini : MiniScreen
 
     void grabItems()
     {
-        AudioClose.Play();
+        AudioTake.Play();
         OpenedSprite.Hide();
         EmptySprite.Show();
         Hero.Instance.InsertItem(Gun);

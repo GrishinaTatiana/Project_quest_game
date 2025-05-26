@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnjw63gt5omma"]
+[gd_scene load_steps=9 format=3 uid="uid://dnjw63gt5omma"]
 
 [ext_resource type="PackedScene" uid="uid://cevqu155kry03" path="res://МиниЭкраны/MiniScreen.tscn" id="1_rut2c"]
 [ext_resource type="Texture2D" uid="uid://bxpkjbluokrn1" path="res://Статические обьекты/Микроволновка/микров.png" id="2_2bghd"]
@@ -6,9 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://b6vi5a2qud865" path="res://Статические обьекты/Микроволновка/микровРАВПЕН.png" id="4_n8llm"]
 [ext_resource type="Texture2D" uid="uid://dbwu22xbeuk4l" path="res://Статические обьекты/Микроволновка/микроЦЦВА.png" id="5_ge7js"]
 [ext_resource type="Texture2D" uid="uid://dxadfcpwigdls" path="res://Статические обьекты/Микроволновка/микроВА.png" id="6_n8llm"]
+[ext_resource type="AudioStream" uid="uid://10xfed4tri01" path="res://Звуки/микроволновка/открытие-микроволновки.mp3" id="7_ka83e"]
+[ext_resource type="AudioStream" uid="uid://dpy7m43tt8cwl" path="res://Звуки/микроволновка/работа-микроволновки.mp3" id="8_0f0jv"]
 
-[node name="CanvasLayer" instance=ExtResource("1_rut2c")]
+[node name="CanvasLayer" node_paths=PackedStringArray("AudioOpen", "AudioCooking") instance=ExtResource("1_rut2c")]
 script = ExtResource("2_f0u0c")
+AudioOpen = NodePath("AudioOpen")
+AudioCooking = NodePath("AudioСooking")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_2bghd")
@@ -48,3 +52,11 @@ flat = true
 visible = false
 position = Vector2(960, 540)
 texture = ExtResource("6_n8llm")
+
+[node name="AudioOpen" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("7_ka83e")
+bus = &"Sounds"
+
+[node name="AudioСooking" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("8_0f0jv")
+bus = &"Sounds"

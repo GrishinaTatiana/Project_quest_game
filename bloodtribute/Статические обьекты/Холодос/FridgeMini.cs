@@ -5,6 +5,8 @@ public partial class FridgeMini : MiniScreen
 {
     Sprite2D openedDoor;
     [Export] Item Breakfast;
+    [Export] AudioStreamPlayer AudioOpen;
+    [Export] AudioStreamPlayer AudioTake;
 
     public override void _Ready()
     {
@@ -20,6 +22,7 @@ public partial class FridgeMini : MiniScreen
     {
         Background.Hide();
         openedDoor.Show();
+        AudioOpen.Play();
         Background.GetChild<Button>(0).Pressed -= openDoor;
     }
 
@@ -27,6 +30,7 @@ public partial class FridgeMini : MiniScreen
     {
         openedDoor.GetChild<Button>(0).Pressed -= retriveMeal;
         openedDoor.Hide();
+        AudioTake.Play();
         Hero.Instance.InsertItem(Breakfast);
         Breakfast = null;
         Background.Show();

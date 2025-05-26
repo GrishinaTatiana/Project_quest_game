@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cp3ij2eluwy44"]
+[gd_scene load_steps=10 format=3 uid="uid://cp3ij2eluwy44"]
 
 [ext_resource type="PackedScene" uid="uid://bnjeminrdn7x4" path="res://Уровень/Level.tscn" id="1_y8ptf"]
 [ext_resource type="Texture2D" uid="uid://q06lo8hf7b6k" path="res://Уровни/Второй уровень/уууууу.png" id="2_03uyo"]
 [ext_resource type="Script" uid="uid://g1vnboa2w1fl" path="res://Уровни/Второй уровень/SecondDoor.cs" id="3_5x14y"]
+[ext_resource type="AudioStream" uid="uid://dgk60prinamsc" path="res://Звуки/полицеский участок/Sound_03184.mp3" id="4_kln88"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_03uyo"]
 a = Vector2(-4559, 426)
@@ -55,3 +56,9 @@ shape = SubResource("RectangleShape2D_kln88")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Door/InteractableArea" index="1"]
 position = Vector2(47.835, 705.192)
 shape = SubResource("RectangleShape2D_7d4br")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource("4_kln88")
+volume_db = -30.0
+autoplay = true
+bus = &"Music"
